@@ -2,1485 +2,671 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal da Transparência Premium – Freire Tecnologia</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --verde: #0A6E4A;
-    --verde-claro: #1D9E75;
-    --verde-escuro: #064D34;
-    --verde-bg: #E6F4EE;
-    --dourado: #C8972A;
-    --dourado-claro: #EFC052;
-    --azul: #1A4A8A;
-    --azul-claro: #3B7DD8;
-    --cinza-10: #F8F9FA;
-    --cinza-20: #EEF0F2;
-    --cinza-40: #CDD1D6;
-    --cinza-60: #8E98A3;
-    --cinza-80: #3D4652;
-    --texto: #1C2635;
-    --borda: rgba(0,0,0,0.08);
-    --radius: 10px;
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-  }
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portal da Transparência Pública Municipal — Freire Tecnologia</title>
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+<!-- Open Graph / WhatsApp / redes sociais -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://masfreire-hub.github.io/portal-transparencia/">
+<meta property="og:title" content="Portal da Transparência Pública Municipal">
+<meta property="og:description" content="Portal completo de transparência pública com PNTP 94%, receitas, despesas, licitações, contratos, obras e IA Cidadã. Desenvolvido pela Freire Tecnologia.">
+<meta property="og:image" content="https://masfreire-hub.github.io/portal-transparencia/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Freire Tecnologia">
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #F5F7F5;
-    color: var(--texto);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal da Transparência Pública Municipal">
+<meta name="twitter:description" content="Portal completo de transparência pública com PNTP 94%, IA Cidadã e conformidade total. Freire Tecnologia.">
+<meta name="twitter:image" content="https://masfreire-hub.github.io/portal-transparencia/preview.png">
 
-  /* ======= HEADER ======= */
-  .header {
-    background: var(--verde-escuro);
-    color: white;
-    border-bottom: 3px solid var(--dourado);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 64px;
-  }
-  .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .logo-shield {
-    width: 38px;
-    height: 44px;
-    background: var(--dourado);
-    clip-path: polygon(50% 0%, 100% 15%, 100% 60%, 50% 100%, 0% 60%, 0% 15%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: white;
-    flex-shrink: 0;
-  }
-  .logo-text { 
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    letter-spacing: 0.01em;
-    line-height: 1.2;
-  }
-  .logo-sub {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.7;
-    font-weight: 300;
-  }
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-header {
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 12.5px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    transition: all 0.18s;
-    text-decoration: none;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .btn-outline-gold {
-    background: transparent;
-    border: 1.5px solid var(--dourado);
-    color: var(--dourado-claro);
-  }
-  .btn-gold {
-    background: var(--dourado);
-    color: white;
-  }
-  .btn-gold:hover { background: var(--dourado-claro); }
-  .accessibility-bar {
-    background: rgba(0,0,0,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px 2rem;
-    font-size: 11px;
-    color: rgba(255,255,255,0.65);
-  }
-  .access-btns { display: flex; gap: 10px; align-items: center; }
-  .access-btn {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: rgba(255,255,255,0.8);
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.15s;
-  }
-  .access-btn:hover { background: rgba(255,255,255,0.2); }
-
-  /* ======= NAV ======= */
-  .nav-bar {
-    background: var(--verde);
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
-    gap: 0;
-    overflow-x: auto;
-  }
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 11px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.85);
-    cursor: pointer;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: all 0.15s;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background: none;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .nav-item:hover { color: white; background: rgba(255,255,255,0.08); }
-  .nav-item.active { color: white; border-bottom-color: var(--dourado); background: rgba(255,255,255,0.1); }
-  .nav-icon { font-size: 15px; opacity: 0.85; }
-
-  /* ======= MAIN ======= */
-  .main { max-width: 1320px; margin: 0 auto; padding: 28px 2rem 60px; }
-
-  /* ======= CONFORMIDADE PNTP ======= */
-  .pntp-banner {
-    background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--azul) 100%);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .pntp-left { display: flex; align-items: center; gap: 16px; }
-  .pntp-badge {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 3px solid var(--dourado);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Serif Display', serif;
-    flex-shrink: 0;
-  }
-  .pntp-pct { font-size: 18px; font-weight: 700; line-height: 1; color: var(--dourado-claro); }
-  .pntp-label-sm { font-size: 9px; letter-spacing: 0.1em; opacity: 0.7; }
-  .pntp-info h3 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; margin-bottom: 2px; }
-  .pntp-info p { font-size: 12px; opacity: 0.75; }
-  .pntp-criterios {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .criterio-pill {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 11px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-  }
-  .pill-ok { background: rgba(29,158,117,0.3); color: #7DFCCC; }
-  .pill-warn { background: rgba(200,151,42,0.3); color: #F5D580; }
-  .pill-err { background: rgba(220,50,50,0.25); color: #FF9090; }
-
-  /* ======= GRID DE CARDS SUMÁRIO ======= */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-  .card-metrica {
-    background: white;
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    border: 1px solid var(--borda);
-    box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
-  }
-  .card-metrica::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--accent, var(--verde));
-  }
-  .card-metrica.verde { --accent: var(--verde); }
-  .card-metrica.dourado { --accent: var(--dourado); }
-  .card-metrica.azul { --accent: var(--azul-claro); }
-  .card-metrica.vermelho { --accent: #D84040; }
-  .card-metrica.cinza { --accent: var(--cinza-60); }
-  .card-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--cinza-60);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .card-valor {
-    font-size: 26px;
-    font-weight: 600;
-    color: var(--texto);
-    line-height: 1.1;
-    margin-bottom: 4px;
-  }
-  .card-delta {
-    font-size: 11.5px;
-    font-weight: 500;
-  }
-  .delta-pos { color: var(--verde-claro); }
-  .delta-neg { color: #D84040; }
-  .card-icon {
-    position: absolute;
-    right: 16px;
-    top: 18px;
-    font-size: 28px;
-    opacity: 0.1;
-    color: var(--accent, var(--verde));
-  }
-
-  /* ======= SEÇÃO ======= */
-  .secao {
-    display: none;
-  }
-  .secao.ativa { display: block; }
-
-  /* ======= PAINEL SPLIT ======= */
-  .painel-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    margin-top: 24px;
-  }
-
-  /* ======= TABELA ======= */
-  .box {
-    background: white;
-    border-radius: var(--radius);
-    border: 1px solid var(--borda);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-  .box-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--borda);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .box-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--texto);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .box-title i { color: var(--verde); font-size: 16px; }
-  .box-body { padding: 20px; }
-  .table-full { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .table-full th {
-    text-align: left;
-    padding: 8px 12px;
-    background: var(--cinza-10);
-    color: var(--cinza-60);
-    font-weight: 500;
-    font-size: 11.5px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--cinza-20);
-  }
-  .table-full td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--cinza-20);
-    color: var(--texto);
-  }
-  .table-full tr:last-child td { border-bottom: none; }
-  .table-full tr:hover td { background: var(--verde-bg); }
-  .tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 9px;
-    border-radius: 12px;
-    font-size: 11.5px;
-    font-weight: 500;
-  }
-  .tag-verde { background: #E6F4EE; color: var(--verde-escuro); }
-  .tag-laranja { background: #FFF0DC; color: #8A5200; }
-  .tag-vermelho { background: #FDEAEA; color: #8A1C1C; }
-  .tag-azul { background: #E6EEFF; color: #1A3A8A; }
-  .tag-cinza { background: var(--cinza-20); color: var(--cinza-80); }
-
-  /* ======= BARRA DE FILTROS ======= */
-  .filtros-bar {
-    display: flex;
-    gap: 10px;
-    padding: 14px 20px;
-    background: var(--cinza-10);
-    border-bottom: 1px solid var(--borda);
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .filtro-select, .filtro-input {
-    padding: 7px 12px;
-    border: 1px solid var(--cinza-40);
-    border-radius: 6px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--texto);
-    background: white;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .filtro-select:focus, .filtro-input:focus { border-color: var(--verde-claro); }
-  .btn-pesquisar {
-    padding: 7px 18px;
-    background: var(--verde);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.15s;
-  }
-  .btn-pesquisar:hover { background: var(--verde-claro); }
-  .btn-export {
-    padding: 7px 14px;
-    border: 1px solid var(--cinza-40);
-    background: white;
-    border-radius: 6px;
-    font-size: 12.5px;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--cinza-80);
-    transition: all 0.15s;
-    margin-left: auto;
-  }
-  .btn-export:hover { border-color: var(--verde); color: var(--verde); }
-
-  /* ======= RADAR / CHARTS ======= */
-  .chart-wrap {
-    position: relative;
-    width: 100%;
-    height: 220px;
-  }
-
-  /* ======= ATIVIDADE LATERAL ======= */
-  .atividade-lista { list-style: none; }
-  .atividade-item {
-    display: flex;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--cinza-20);
-  }
-  .atividade-item:last-child { border-bottom: none; }
-  .ativ-dot {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 14px;
-    margin-top: 2px;
-  }
-  .ativ-dot-verde { background: var(--verde-bg); color: var(--verde); }
-  .ativ-dot-dourado { background: #FFF3D6; color: var(--dourado); }
-  .ativ-dot-azul { background: #E8F0FF; color: var(--azul-claro); }
-  .ativ-dot-cinza { background: var(--cinza-20); color: var(--cinza-60); }
-  .ativ-info { flex: 1; }
-  .ativ-titulo { font-size: 13px; font-weight: 500; color: var(--texto); line-height: 1.3; }
-  .ativ-tempo { font-size: 11.5px; color: var(--cinza-60); margin-top: 2px; }
-
-  /* ======= PNTP CHECK ======= */
-  .criterio-check {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--cinza-20);
-    font-size: 12.5px;
-  }
-  .criterio-check:last-child { border-bottom: none; }
-  .crit-nome { color: var(--texto); flex: 1; }
-  .crit-status { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; white-space: nowrap; }
-  .s-ok { color: #0A6E4A; }
-  .s-warn { color: #B07900; }
-  .s-err { color: #B02020; }
-
-  /* ======= IA CHAT ======= */
-  .ia-box {
-    background: white;
-    border-radius: var(--radius);
-    border: 1px solid var(--borda);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    margin-top: 24px;
-  }
-  .ia-header {
-    background: linear-gradient(90deg, var(--verde-escuro), var(--azul));
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .ia-header i { color: var(--dourado-claro); font-size: 20px; }
-  .ia-header span { color: white; font-size: 14px; font-weight: 500; }
-  .ia-header-tag {
-    margin-left: auto;
-    font-size: 10px;
-    padding: 3px 8px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 12px;
-    color: rgba(255,255,255,0.8);
-    letter-spacing: 0.08em;
-  }
-  .ia-chat {
-    padding: 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 180px;
-    max-height: 260px;
-    overflow-y: auto;
-  }
-  .msg {
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 13.5px;
-    max-width: 85%;
-    line-height: 1.5;
-  }
-  .msg-bot { background: var(--cinza-10); color: var(--texto); align-self: flex-start; border-radius: 4px 12px 12px 12px; }
-  .msg-user { background: var(--verde-escuro); color: white; align-self: flex-end; border-radius: 12px 4px 12px 12px; }
-  .ia-input-area {
-    display: flex;
-    gap: 8px;
-    padding: 12px 16px;
-    border-top: 1px solid var(--borda);
-    background: var(--cinza-10);
-  }
-  .ia-input {
-    flex: 1;
-    border: 1px solid var(--cinza-40);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    background: white;
-  }
-  .ia-input:focus { border-color: var(--verde); }
-  .btn-send {
-    background: var(--verde);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    width: 38px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: background 0.15s;
-  }
-  .btn-send:hover { background: var(--verde-claro); }
-  .ia-sugestoes {
-    padding: 0 16px 12px;
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .sugestao-pill {
-    padding: 4px 11px;
-    background: var(--verde-bg);
-    color: var(--verde-escuro);
-    border-radius: 14px;
-    font-size: 12px;
-    cursor: pointer;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    transition: background 0.15s;
-  }
-  .sugestao-pill:hover { background: #C2E8D8; }
-
-  /* ======= PROGRESSO BARRA ======= */
-  .progress-bar {
-    width: 100%;
-    height: 7px;
-    background: var(--cinza-20);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-top: 4px;
-  }
-  .progress-fill {
-    height: 100%;
-    border-radius: 4px;
-    background: var(--verde);
-    transition: width 0.4s;
-  }
-  .progress-fill.warn { background: var(--dourado); }
-  .progress-fill.danger { background: #D84040; }
-
-  /* ======= MAPA OBRAS (placeholder) ======= */
-  .mapa-placeholder {
-    width: 100%;
-    height: 320px;
-    background: var(--cinza-20);
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--cinza-60);
-    font-size: 13px;
-    gap: 8px;
-    flex-direction: column;
-  }
-
-  /* ======= SIC MODAL ======= */
-  .sic-form { display: flex; flex-direction: column; gap: 14px; }
-  .form-row { display: flex; gap: 14px; }
-  .form-group { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-  .form-label { font-size: 12px; font-weight: 500; color: var(--cinza-80); }
-  .form-control {
-    padding: 9px 12px;
-    border: 1px solid var(--cinza-40);
-    border-radius: 6px;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .form-control:focus { border-color: var(--verde); }
-  textarea.form-control { resize: vertical; min-height: 80px; }
-
-  /* ======= FOOTER ======= */
-  .footer {
-    background: var(--verde-escuro);
-    color: rgba(255,255,255,0.65);
-    text-align: center;
-    padding: 20px 2rem;
-    font-size: 12px;
-    border-top: 3px solid var(--dourado);
-  }
-  .footer a { color: var(--dourado-claro); text-decoration: none; }
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-  }
-
-  /* ======= RESPONSIVE ======= */
-  @media (max-width: 768px) {
-    .painel-grid { grid-template-columns: 1fr; }
-    .header-top { padding: 0 1rem; }
-    .main { padding: 16px 1rem 40px; }
-    .pntp-banner { flex-direction: column; align-items: flex-start; }
-    .form-row { flex-direction: column; }
-  }
-</style>
-
-<!-- Link para Tabler Icons -->
+<!-- SEO -->
+<meta name="description" content="Portal completo de transparência pública municipal com PNTP 94%, receitas, despesas, licitações, contratos, obras e IA Cidadã. Freire Tecnologia.">
+<meta name="author" content="Freire Tecnologia">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --verde:#0A5C3A;--verde2:#0D7A4E;--verde3:#1A9E70;
+  --dourado:#C8960A;--dourado2:#E8B020;--dourado3:#FFC837;
+  --cinza1:#F7F8FA;--cinza2:#EFF1F4;--cinza3:#DDE1E7;
+  --cinza4:#B0B8C4;--cinza5:#6B7685;--cinza6:#3D4A5C;
+  --tx:#1C2635;--branco:#fff;
+  --r:8px;--shadow:0 1px 4px rgba(0,0,0,.08);
+  --shadow2:0 2px 12px rgba(0,0,0,.1);
+}
+body{font-family:'Inter',sans-serif;background:var(--cinza1);color:var(--tx);font-size:14px;line-height:1.5}
+
+/* ===== BARRA ACESSIBILIDADE ===== */
+.acess-bar{background:#0A3D28;color:rgba(255,255,255,.65);display:flex;justify-content:space-between;align-items:center;padding:4px 20px;font-size:11px}
+.acess-btns{display:flex;gap:6px}
+.acess-btn{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.8);padding:2px 9px;border-radius:3px;cursor:pointer;font-size:11px;font-family:'Inter',sans-serif;transition:.15s}
+.acess-btn:hover{background:rgba(255,255,255,.2)}
+
+/* ===== HEADER ===== */
+.header{background:var(--verde);border-bottom:3px solid var(--dourado);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:62px}
+.logo-area{display:flex;align-items:center;gap:12px}
+.logo-shield{width:40px;height:46px;background:var(--dourado);clip-path:polygon(50% 0%,100% 14%,100% 62%,50% 100%,0% 62%,0% 14%);display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:var(--branco);flex-shrink:0}
+.logo-nome{font-size:17px;font-weight:700;color:var(--branco);line-height:1.2}
+.logo-sub{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.6);text-transform:uppercase}
+.header-btns{display:flex;gap:8px}
+.btn-sic{background:transparent;border:1.5px solid var(--dourado2);color:var(--dourado3);padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:.15s}
+.btn-sic:hover{background:rgba(200,150,10,.15)}
+.btn-acesso{background:var(--dourado);border:none;color:var(--branco);padding:8px 18px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.15s}
+.btn-acesso:hover{background:var(--dourado2)}
+
+/* ===== NAV ===== */
+.nav{background:var(--verde2);display:flex;align-items:center;padding:0 16px;overflow-x:auto;gap:0}
+.nav-item{display:flex;align-items:center;gap:5px;padding:11px 14px;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;border-top:none;border-left:none;border-right:none;background:none;font-family:'Inter',sans-serif;transition:.15s}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav-item.ativo{color:#fff;border-bottom-color:var(--dourado3);background:rgba(255,255,255,.1)}
+
+/* ===== MAIN ===== */
+.main{max-width:1380px;margin:0 auto;padding:22px 20px 60px}
+.secao{display:none}.secao.ativa{display:block}
+
+/* ===== BANNER PNTP ===== */
+.pntp-banner{background:linear-gradient(135deg,#0A3D28 0%,#1A3F6A 100%);border-radius:var(--r);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:16px;flex-wrap:wrap}
+.pntp-esq{display:flex;align-items:center;gap:16px}
+.pntp-circulo{width:60px;height:60px;border-radius:50%;border:3px solid var(--dourado);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.pntp-pct{font-size:19px;font-weight:700;color:var(--dourado3);line-height:1}
+.pntp-rotulo{font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.55)}
+.pntp-info h3{font-size:17px;font-weight:600;color:#fff;margin-bottom:2px}
+.pntp-info p{font-size:12px;color:rgba(255,255,255,.6)}
+.pntp-tags{display:flex;gap:8px;flex-wrap:wrap}
+.ptag{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500}
+.ptag-ok{background:rgba(0,200,120,.2);color:#5FF5B0;border:1px solid rgba(0,200,120,.3)}
+.ptag-warn{background:rgba(200,150,40,.2);color:#FFDE80;border:1px solid rgba(200,150,40,.3)}
+.ptag-err{background:rgba(230,60,60,.2);color:#FF9999;border:1px solid rgba(230,60,60,.3)}
+
+/* ===== CARDS GRID ===== */
+.cards-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:1100px){.cards-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.cards-grid{grid-template-columns:repeat(2,1fr)}}
+.card-m{background:var(--branco);border-radius:var(--r);padding:18px 20px;border:1px solid var(--cinza3);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card-m::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-acc,var(--verde2))}
+.card-m.c-v{--c-acc:var(--verde2)}
+.card-m.c-d{--c-acc:var(--dourado)}
+.card-m.c-a{--c-acc:#2A7DD8}
+.card-m.c-ci{--c-acc:var(--cinza4)}
+.card-rotulo{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--cinza5);margin-bottom:8px}
+.card-valor{font-size:26px;font-weight:700;color:var(--tx);line-height:1.1;margin-bottom:4px}
+.card-delta{font-size:11.5px;font-weight:500}
+.d-pos{color:var(--verde3)}.d-neg{color:#D44040}
+.d-info{color:#2A7DD8}
+.barra-prog{width:100%;height:5px;background:var(--cinza2);border-radius:3px;overflow:hidden;margin-top:8px}
+.barra-fill{height:100%;border-radius:3px;background:var(--verde2)}
+.barra-fill.warn{background:var(--dourado)}
+.card-sub{font-size:11px;color:var(--cinza5);margin-top:3px}
+
+/* ===== PAINEL DIVIDIDO ===== */
+.painel{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:0}
+@media(max-width:900px){.painel{grid-template-columns:1fr}}
+.box{background:var(--branco);border:1px solid var(--cinza3);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.box-hd{padding:14px 20px;border-bottom:1px solid var(--cinza3);display:flex;align-items:center;justify-content:space-between}
+.box-titulo{font-size:14px;font-weight:600;color:var(--tx);display:flex;align-items:center;gap:7px}
+.box-titulo i{color:var(--verde2);font-size:16px}
+.box-body{padding:18px 20px}
+.btn-exp{padding:6px 13px;border:1px solid var(--cinza3);background:var(--branco);border-radius:5px;font-size:12px;color:var(--cinza6);cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px;transition:.15s}
+.btn-exp:hover{border-color:var(--verde2);color:var(--verde2)}
+
+/* ===== ATIVIDADE ===== */
+.ativ-lista{list-style:none}
+.ativ-item{display:flex;gap:10px;padding:11px 16px;border-bottom:1px solid var(--cinza2)}
+.ativ-item:last-child{border-bottom:none}
+.ativ-ico{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:14px}
+.ico-v{background:#E6F4EE;color:var(--verde2)}
+.ico-d{background:#FFF3D0;color:var(--dourado)}
+.ico-a{background:#E8EEFF;color:#2A6DD8}
+.ico-ci{background:var(--cinza2);color:var(--cinza5)}
+.ativ-txt{flex:1}
+.ativ-nome{font-size:13px;font-weight:500;color:var(--tx);line-height:1.35}
+.ativ-tempo{font-size:11.5px;color:var(--cinza5);margin-top:2px}
+
+/* ===== GRÁFICO ===== */
+.chart-wrap{position:relative;width:100%;height:260px}
+
+/* ===== FILTROS ===== */
+.filtros{display:flex;gap:8px;padding:12px 20px;background:var(--cinza1);border-bottom:1px solid var(--cinza2);flex-wrap:wrap;align-items:center}
+.f-sel,.f-inp{padding:7px 11px;border:1px solid var(--cinza3);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;color:var(--tx);background:var(--branco);outline:none}
+.f-sel:focus,.f-inp:focus{border-color:var(--verde2)}
+.btn-busca{padding:7px 16px;background:var(--verde2);color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px;transition:.15s}
+.btn-busca:hover{background:var(--verde3)}
+.ml-auto{margin-left:auto}
+
+/* ===== TABELA ===== */
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:9px 14px;background:var(--cinza1);color:var(--cinza5);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--cinza2)}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--cinza2);color:var(--tx)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#F5FAF7}
+.tag{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:12px;font-size:11.5px;font-weight:500}
+.tg-v{background:#E6F4EE;color:#0A5C3A}.tg-d{background:#FFF3D0;color:#8A5A00}
+.tg-a{background:#E8EEFF;color:#1A3A8A}.tg-ci{background:var(--cinza2);color:var(--cinza6)}
+.tg-r{background:#FDEAEA;color:#8A1C1C}
+a.link{color:#2A7DD8;text-decoration:none}.a.link:hover{text-decoration:underline}
+
+/* ===== PAGINAÇÃO ===== */
+.pag{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-top:1px solid var(--cinza2);font-size:12px;color:var(--cinza5)}
+
+/* ===== MAPA OBRAS ===== */
+.mapa-ph{width:100%;height:300px;background:var(--cinza2);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cinza5);gap:8px}
+
+/* ===== PROGRESSO LISTA ===== */
+.prog-item{display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid var(--cinza2)}
+.prog-item:last-child{border-bottom:none}
+.prog-ico{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;margin-top:2px}
+.prog-info{flex:1}
+.prog-nome{font-size:13px;font-weight:500;color:var(--tx);margin-bottom:5px}
+.prog-bar{width:100%;height:5px;background:var(--cinza2);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px}
+.prog-pf-v{background:var(--verde2)}.prog-pf-d{background:var(--dourado)}.prog-pf-r{background:#D84040}
+.prog-sub{font-size:11px;color:var(--cinza5);margin-top:3px}
+
+/* ===== CONFORMIDADE ===== */
+.crit-check{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cinza2);font-size:12.5px}
+.crit-check:last-child{border-bottom:none}
+.cs-ok{color:var(--verde2);font-weight:600;display:flex;align-items:center;gap:3px}
+.cs-warn{color:#C88A00;font-weight:600;display:flex;align-items:center;gap:3px}
+.cs-err{color:#C02020;font-weight:600;display:flex;align-items:center;gap:3px}
+
+/* ===== IA CHAT ===== */
+.ia-wrap{background:var(--branco);border:1px solid var(--cinza3);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-top:20px}
+.ia-hd{background:linear-gradient(90deg,var(--verde) 0%,#1A3F6A 100%);padding:13px 20px;display:flex;align-items:center;gap:10px}
+.ia-hd i{color:var(--dourado3);font-size:20px}
+.ia-hd span{color:#fff;font-size:14px;font-weight:500}
+.ia-beta{margin-left:auto;font-size:10px;padding:3px 8px;background:rgba(255,255,255,.15);border-radius:12px;color:rgba(255,255,255,.8);letter-spacing:.08em}
+.ia-sug{padding:10px 16px 6px;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--cinza2)}
+.sug-pill{padding:5px 12px;background:#E6F4EE;color:#0A5C3A;border-radius:16px;font-size:12px;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:.15s}
+.sug-pill:hover{background:#C2E8D8}
+.ia-msgs{padding:14px 18px;display:flex;flex-direction:column;gap:10px;min-height:160px;max-height:280px;overflow-y:auto}
+.msg{padding:10px 14px;border-radius:12px;font-size:13.5px;max-width:85%;line-height:1.55}
+.msg-bot{background:var(--cinza1);color:var(--tx);align-self:flex-start;border-radius:4px 12px 12px 12px}
+.msg-user{background:var(--verde);color:#fff;align-self:flex-end;border-radius:12px 4px 12px 12px}
+.ia-inp-area{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--cinza2);background:var(--cinza1)}
+.ia-inp{flex:1;border:1px solid var(--cinza3);border-radius:7px;padding:8px 13px;font-size:13px;font-family:'Inter',sans-serif;outline:none;background:var(--branco)}
+.ia-inp:focus{border-color:var(--verde2)}
+.btn-send{background:var(--verde2);color:#fff;border:none;border-radius:7px;width:38px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:.15s}
+.btn-send:hover{background:var(--verde3)}
+
+/* ===== SIC FORM ===== */
+.sic-form{display:flex;flex-direction:column;gap:13px}
+.form-row{display:flex;gap:13px}@media(max-width:700px){.form-row{flex-direction:column}}
+.form-grupo{display:flex;flex-direction:column;gap:5px;flex:1}
+.form-label{font-size:12px;font-weight:500;color:var(--cinza6)}
+.form-ctrl{padding:8px 11px;border:1px solid var(--cinza3);border-radius:6px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:.15s}
+.form-ctrl:focus{border-color:var(--verde2)}
+textarea.form-ctrl{resize:vertical;min-height:80px}
+
+/* ===== RADAR ===== */
+.radar-wrap{position:relative;width:100%;height:290px}
+
+/* ===== KPIS LINHA ===== */
+.kpi-linha{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--cinza2);border:1px solid var(--cinza2);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.kpi-c{background:var(--branco);padding:14px 16px;text-align:center}
+.kpi-v{font-size:22px;font-weight:700;display:block;line-height:1}
+.kpi-v.v{color:var(--verde2)}.kpi-v.d{color:var(--dourado)}.kpi-v.a{color:#2A7DD8}.kpi-v.ci{color:var(--cinza5)}
+.kpi-l{font-size:10.5px;color:var(--cinza5);margin-top:3px}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--verde);color:rgba(255,255,255,.6);text-align:center;padding:18px 20px;border-top:3px solid var(--dourado);font-size:12px}
+.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:8px;flex-wrap:wrap}
+.footer a{color:var(--dourado3);text-decoration:none}
+</style>
 </head>
 <body>
 
+<!-- ACESSIBILIDADE -->
+<div class="acess-bar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+  <span>Portal da Transparência Pública Municipal</span>
+  <div class="acess-btns">
+    <button class="acess-btn" onclick="ajFont(1)">A+</button>
+    <button class="acess-btn" onclick="ajFont(-1)">A–</button>
+    <button class="acess-btn" onclick="toggleContraste()">Alto Contraste</button>
+    <button class="acess-btn">Libras</button>
+    <button class="acess-btn">Mapa do Site</button>
+  </div>
+</div>
+
 <!-- HEADER -->
-<header class="header">
-  <div class="accessibility-bar">
-    <span>Portal da Transparência Pública Municipal</span>
-    <div class="access-btns">
-      <button class="access-btn" onclick="adjustFont(1)">A+</button>
-      <button class="access-btn" onclick="adjustFont(-1)">A–</button>
-      <button class="access-btn" onclick="toggleContrast()">Alto Contraste</button>
-      <button class="access-btn">Libras</button>
-      <button class="access-btn">Mapa do Site</button>
+<header class="header" role="banner">
+  <div class="logo-area">
+    <div class="logo-shield" aria-hidden="true">F</div>
+    <div>
+      <div class="logo-nome">Prefeitura Municipal</div>
+      <div class="logo-sub">Portal da Transparência Pública · Freire Tecnologia</div>
     </div>
   </div>
-  <div class="header-top">
-    <div class="logo-area">
-      <div class="logo-shield">F</div>
-      <div>
-        <div class="logo-text">Prefeitura Municipal</div>
-        <div class="logo-sub">Portal da Transparência Pública · Freire Tecnologia</div>
-      </div>
-    </div>
-    <div class="header-actions">
-      <button class="btn-header btn-outline-gold" onclick="irParaSecao('sic')">
-        <i class="ti ti-message-circle"></i> e-SIC / Ouvidoria
-      </button>
-      <button class="btn-header btn-gold">
-        <i class="ti ti-lock"></i> Acesso Restrito
-      </button>
-    </div>
+  <div class="header-btns">
+    <button class="btn-sic" onclick="ir('sic')">e-SIC / Ouvidoria</button>
+    <button class="btn-acesso" onclick="abrirLogin()"><i class="ti ti-lock"></i> Acesso Restrito</button>
   </div>
 </header>
 
 <!-- NAV -->
-<nav class="nav-bar" role="navigation" aria-label="Menu principal">
-  <button class="nav-item active" onclick="irParaSecao('dashboard')" id="nav-dashboard">
-    <i class="ti ti-layout-dashboard nav-icon"></i> Dashboard
-  </button>
-  <button class="nav-item" onclick="irParaSecao('receitas')" id="nav-receitas">
-    <i class="ti ti-trending-up nav-icon"></i> Receitas
-  </button>
-  <button class="nav-item" onclick="irParaSecao('despesas')" id="nav-despesas">
-    <i class="ti ti-trending-down nav-icon"></i> Despesas
-  </button>
-  <button class="nav-item" onclick="irParaSecao('licitacoes')" id="nav-licitacoes">
-    <i class="ti ti-gavel nav-icon"></i> Licitações
-  </button>
-  <button class="nav-item" onclick="irParaSecao('contratos')" id="nav-contratos">
-    <i class="ti ti-file-text nav-icon"></i> Contratos
-  </button>
-  <button class="nav-item" onclick="irParaSecao('obras')" id="nav-obras">
-    <i class="ti ti-building-community nav-icon"></i> Obras
-  </button>
-  <button class="nav-item" onclick="irParaSecao('rh')" id="nav-rh">
-    <i class="ti ti-users nav-icon"></i> Recursos Humanos
-  </button>
-  <button class="nav-item" onclick="irParaSecao('planejamento')" id="nav-planejamento">
-    <i class="ti ti-calendar-stats nav-icon"></i> Planejamento
-  </button>
-  <button class="nav-item" onclick="irParaSecao('sic')" id="nav-sic">
-    <i class="ti ti-mail nav-icon"></i> e-SIC / Ouvidoria
-  </button>
-  <button class="nav-item" onclick="irParaSecao('pntp')" id="nav-pntp">
-    <i class="ti ti-shield-check nav-icon"></i> Conformidade PNTP
-  </button>
-  <button class="nav-item" onclick="irParaSecao('ia')" id="nav-ia">
-    <i class="ti ti-brain nav-icon"></i> IA Cidadã
-  </button>
+<nav class="nav" role="navigation" aria-label="Menu principal">
+  <button class="nav-item ativo" id="nav-dash" onclick="ir('dashboard')"><i class="ti ti-layout-dashboard"></i>Dashboard</button>
+  <button class="nav-item" id="nav-rec" onclick="ir('receitas')"><i class="ti ti-trending-up"></i>Receitas</button>
+  <button class="nav-item" id="nav-desp" onclick="ir('despesas')"><i class="ti ti-trending-down"></i>Despesas</button>
+  <button class="nav-item" id="nav-lic" onclick="ir('licitacoes')"><i class="ti ti-gavel"></i>Licitações</button>
+  <button class="nav-item" id="nav-con" onclick="ir('contratos')"><i class="ti ti-file-text"></i>Contratos</button>
+  <button class="nav-item" id="nav-ob" onclick="ir('obras')"><i class="ti ti-building-community"></i>Obras</button>
+  <button class="nav-item" id="nav-rh" onclick="ir('rh')"><i class="ti ti-users"></i>Recursos Humanos</button>
+  <button class="nav-item" id="nav-plan" onclick="ir('planejamento')"><i class="ti ti-calendar-stats"></i>Planejamento</button>
+  <button class="nav-item" id="nav-sic" onclick="ir('sic')"><i class="ti ti-mail"></i>e-SIC / Ouvidoria</button>
+  <button class="nav-item" id="nav-pntp" onclick="ir('pntp')"><i class="ti ti-shield-check"></i>Conformidade PNTP</button>
+  <button class="nav-item" id="nav-ia" onclick="ir('ia')"><i class="ti ti-robot"></i>IA Cidadã</button>
 </nav>
 
 <main class="main" role="main">
 
-  <!-- BANNER PNTP -->
-  <div class="pntp-banner">
-    <div class="pntp-left">
-      <div class="pntp-badge">
-        <span class="pntp-pct" id="pntp-pct">94%</span>
-        <span class="pntp-label-sm">PNTP</span>
-      </div>
-      <div class="pntp-info">
-        <h3>Radar da Transparência — Exercício 2025</h3>
-        <p>236 de 251 critérios atendidos · Última atualização: 08/06/2025 às 09:42</p>
-      </div>
+<!-- BANNER PNTP (sempre visível) -->
+<div class="pntp-banner" id="pntp-banner">
+  <div class="pntp-esq">
+    <div class="pntp-circulo">
+      <span class="pntp-pct" id="pntp-num">94%</span>
+      <span class="pntp-rotulo">PNTP</span>
     </div>
-    <div class="pntp-criterios">
-      <span class="criterio-pill pill-ok"><i class="ti ti-check"></i> 236 Atendidos</span>
-      <span class="criterio-pill pill-warn"><i class="ti ti-alert-triangle"></i> 10 Parciais</span>
-      <span class="criterio-pill pill-err"><i class="ti ti-x"></i> 5 Pendentes</span>
+    <div class="pntp-info">
+      <h3>Radar da Transparência — Exercício 2025</h3>
+      <p>236 de 251 critérios atendidos · Última atualização: 08/06/2025 às 09:42</p>
+    </div>
+  </div>
+  <div class="pntp-tags">
+    <span class="ptag ptag-ok"><i class="ti ti-check"></i> 236 Atendidos</span>
+    <span class="ptag ptag-warn"><i class="ti ti-alert-triangle"></i> 10 Parciais</span>
+    <span class="ptag ptag-err"><i class="ti ti-x"></i> 5 Pendentes</span>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<section class="secao ativa" id="sec-dashboard">
+  <div class="cards-grid">
+    <div class="card-m c-v">
+      <div class="card-rotulo">Receita Arrecadada</div>
+      <div class="card-valor">R$ 42,8M</div>
+      <div class="card-delta d-pos">▲ 8,3% vs mai/2025</div>
+      <div class="barra-prog"><div class="barra-fill" style="width:78%"></div></div>
+      <div class="card-sub">78% da previsão anual</div>
+    </div>
+    <div class="card-m c-d">
+      <div class="card-rotulo">Despesa Liquidada</div>
+      <div class="card-valor">R$ 38,1M</div>
+      <div class="card-delta d-neg">▲ 4,1% vs mai/2025</div>
+      <div class="barra-prog"><div class="barra-fill warn" style="width:68%"></div></div>
+      <div class="card-sub">68% do orçamento</div>
+    </div>
+    <div class="card-m c-a">
+      <div class="card-rotulo">Licitações Ativas</div>
+      <div class="card-valor">23</div>
+      <div class="card-delta d-info">12 em andamento · 11 homologadas</div>
+    </div>
+    <div class="card-m c-v">
+      <div class="card-rotulo">Contratos Vigentes</div>
+      <div class="card-valor">147</div>
+      <div class="card-delta" style="color:var(--cinza5)">8 vencem em 30 dias</div>
+    </div>
+    <div class="card-m c-d">
+      <div class="card-rotulo">Obras em Andamento</div>
+      <div class="card-valor">31</div>
+      <div class="card-delta" style="color:var(--cinza5)">4 paralisadas · 18 concluídas</div>
+    </div>
+    <div class="card-m c-ci">
+      <div class="card-rotulo">Servidores Ativos</div>
+      <div class="card-valor">1.847</div>
+      <div class="card-delta" style="color:var(--cinza5)">1.204 efetivos · 643 comissionados</div>
     </div>
   </div>
 
-  <!-- ============ DASHBOARD ============ -->
-  <section class="secao ativa" id="secao-dashboard">
-
-    <!-- CARDS MÉTRICAS -->
-    <div class="cards-grid">
-      <div class="card-metrica verde">
-        <i class="ti ti-trending-up card-icon"></i>
-        <div class="card-label"><i class="ti ti-chart-arrows"></i> Receita Arrecadada</div>
-        <div class="card-valor">R$ 42,8M</div>
-        <div class="card-delta delta-pos">▲ 8,3% vs mai/2025</div>
-        <div class="progress-bar" style="margin-top:10px"><div class="progress-fill" style="width:78%"></div></div>
-        <div style="font-size:11px;color:var(--cinza-60);margin-top:3px">78% da previsão anual</div>
+  <div class="painel">
+    <div class="box">
+      <div class="box-hd">
+        <div class="box-titulo"><i class="ti ti-chart-bar"></i>Receitas × Despesas — 2025</div>
+        <button class="btn-exp"><i class="ti ti-download"></i>Exportar</button>
       </div>
-      <div class="card-metrica dourado">
-        <i class="ti ti-trending-down card-icon"></i>
-        <div class="card-label"><i class="ti ti-credit-card"></i> Despesa Liquidada</div>
-        <div class="card-valor">R$ 38,1M</div>
-        <div class="card-delta delta-neg">▲ 4,1% vs mai/2025</div>
-        <div class="progress-bar" style="margin-top:10px"><div class="progress-fill warn" style="width:68%"></div></div>
-        <div style="font-size:11px;color:var(--cinza-60);margin-top:3px">68% do orçamento</div>
-      </div>
-      <div class="card-metrica azul">
-        <i class="ti ti-gavel card-icon"></i>
-        <div class="card-label"><i class="ti ti-gavel"></i> Licitações Ativas</div>
-        <div class="card-valor">23</div>
-        <div class="card-delta" style="color:var(--azul-claro)">12 em andamento · 11 homologadas</div>
-      </div>
-      <div class="card-metrica verde">
-        <i class="ti ti-file-text card-icon"></i>
-        <div class="card-label"><i class="ti ti-file-text"></i> Contratos Vigentes</div>
-        <div class="card-valor">147</div>
-        <div class="card-delta" style="color:var(--cinza-60)">8 vencem em 30 dias</div>
-      </div>
-      <div class="card-metrica dourado">
-        <i class="ti ti-building card-icon"></i>
-        <div class="card-label"><i class="ti ti-building-community"></i> Obras em Andamento</div>
-        <div class="card-valor">31</div>
-        <div class="card-delta" style="color:var(--cinza-60)">4 paralisadas · 18 concluídas</div>
-      </div>
-      <div class="card-metrica cinza">
-        <i class="ti ti-users card-icon"></i>
-        <div class="card-label"><i class="ti ti-users"></i> Servidores Ativos</div>
-        <div class="card-valor">1.847</div>
-        <div class="card-delta" style="color:var(--cinza-60)">1.204 efetivos · 643 comissionados</div>
+      <div class="box-body">
+        <div class="chart-wrap">
+          <canvas id="chartDash" role="img" aria-label="Gráfico de barras comparando receitas e despesas mensais de janeiro a junho de 2025"></canvas>
+        </div>
       </div>
     </div>
+    <div class="box">
+      <div class="box-hd"><div class="box-titulo"><i class="ti ti-activity"></i>Atividade Recente</div></div>
+      <ul class="ativ-lista">
+        <li class="ativ-item"><div class="ativ-ico ico-v"><i class="ti ti-file-plus"></i></div><div class="ativ-txt"><div class="ativ-nome">Novo contrato publicado — Pavimentação Rua das Flores</div><div class="ativ-tempo">há 18 minutos</div></div></li>
+        <li class="ativ-item"><div class="ativ-ico ico-d"><i class="ti ti-gavel"></i></div><div class="ativ-txt"><div class="ativ-nome">Pregão 045/2025 homologado — Aquisição de medicamentos</div><div class="ativ-tempo">há 2 horas</div></div></li>
+        <li class="ativ-item"><div class="ativ-ico ico-a"><i class="ti ti-mail"></i></div><div class="ativ-txt"><div class="ativ-nome">e-SIC #2025.0342 respondido dentro do prazo</div><div class="ativ-tempo">há 4 horas</div></div></li>
+        <li class="ativ-item"><div class="ativ-ico ico-v"><i class="ti ti-check"></i></div><div class="ativ-txt"><div class="ativ-nome">Folha de pagamento jun/2025 publicada</div><div class="ativ-tempo">hoje 07:30</div></div></li>
+        <li class="ativ-item"><div class="ativ-ico ico-ci"><i class="ti ti-alert-triangle"></i></div><div class="ativ-txt"><div class="ativ-nome">PNTP: critério EDU-3.2.4 necessita atualização</div><div class="ativ-tempo">ontem 15:20</div></div></li>
+        <li class="ativ-item"><div class="ativ-ico ico-a"><i class="ti ti-building"></i></div><div class="ativ-txt"><div class="ativ-nome">Obra UBS Canabrava: medição de maio publicada</div><div class="ativ-tempo">ontem 10:15</div></div></li>
+      </ul>
+    </div>
+  </div>
 
-    <!-- PAINEL SPLIT: GRÁFICO + ATIVIDADE -->
-    <div class="painel-grid">
-      <div class="box">
-        <div class="box-header">
-          <div class="box-title"><i class="ti ti-chart-bar"></i> Receitas × Despesas — 2025</div>
-          <div style="display:flex;gap:8px">
-            <button class="btn-export"><i class="ti ti-download"></i> Exportar</button>
-          </div>
+  <div class="ia-wrap">
+    <div class="ia-hd"><i class="ti ti-robot"></i><span>Assistente de Transparência — IA Cidadã</span><span class="ia-beta">BETA</span></div>
+    <div class="ia-sug">
+      <button class="sug-pill" onclick="envP('Quanto foi gasto com combustível em 2025?')">💬 Gastos com combustível</button>
+      <button class="sug-pill" onclick="envP('Quais contratos vencem em 30 dias?')">📋 Contratos a vencer</button>
+      <button class="sug-pill" onclick="envP('Quanto foi arrecadado de IPTU?')">💰 Arrecadação IPTU</button>
+      <button class="sug-pill" onclick="envP('Quem recebeu diárias este mês?')">✈️ Diárias do mês</button>
+      <button class="sug-pill" onclick="envP('Qual a nota do PNTP do município?')">🏆 Nota PNTP</button>
+    </div>
+    <div class="ia-msgs" id="ia-chat"><div class="msg msg-bot">Olá! Sou o Assistente de Transparência. Posso responder perguntas sobre receitas, despesas, contratos, licitações, servidores e conformidade PNTP. Como posso ajudar?</div></div>
+    <div class="ia-inp-area">
+      <input class="ia-inp" id="ia-inp" type="text" placeholder="Digite sua pergunta sobre as finanças municipais..." onkeypress="if(event.key==='Enter')envIA()">
+      <button class="btn-send" onclick="envIA()" aria-label="Enviar"><i class="ti ti-send"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECEITAS ============ -->
+<section class="secao" id="sec-receitas">
+  <div class="box">
+    <div class="box-hd">
+      <div class="box-titulo"><i class="ti ti-trending-up"></i>Transparência das Receitas</div>
+      <div style="display:flex;gap:7px">
+        <button class="btn-exp"><i class="ti ti-file-spreadsheet"></i>Excel</button>
+        <button class="btn-exp"><i class="ti ti-file-type-pdf"></i>PDF</button>
+        <button class="btn-exp"><i class="ti ti-api"></i>API JSON</button>
+      </div>
+    </div>
+    <div class="filtros">
+      <select class="f-sel"><option>2025</option><option>2024</option><option>2023</option></select>
+      <select class="f-sel"><option>Todos os meses</option><option>Janeiro</option><option>Fevereiro</option><option>Março</option><option>Abril</option><option>Maio</option><option>Junho</option></select>
+      <select class="f-sel"><option>Todas as fontes</option><option>Tesouro Municipal</option><option>Transferências União</option><option>Transferências Estado</option></select>
+      <input class="f-inp" type="text" placeholder="Pesquisar natureza da receita...">
+      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Pesquisar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Data</th><th>Natureza da Receita</th><th>Fonte</th><th>Categoria</th><th>Previsto</th><th>Arrecadado</th><th>% Execução</th></tr></thead>
+        <tbody>
+          <tr><td>01/06/2025</td><td>IPTU — Imposto Predial e Territorial Urbano</td><td>Tesouro</td><td><span class="tag tg-a">Tributária</span></td><td>R$ 2.840.000</td><td>R$ 2.612.800</td><td><div class="barra-prog"><div class="barra-fill" style="width:92%"></div></div>92%</td></tr>
+          <tr><td>01/06/2025</td><td>ISS — Imposto sobre Serviços</td><td>Tesouro</td><td><span class="tag tg-a">Tributária</span></td><td>R$ 1.920.000</td><td>R$ 1.843.200</td><td><div class="barra-prog"><div class="barra-fill" style="width:96%"></div></div>96%</td></tr>
+          <tr><td>05/06/2025</td><td>FPM — Fundo de Participação dos Municípios</td><td>União</td><td><span class="tag tg-v">Transferência</span></td><td>R$ 8.100.000</td><td>R$ 7.533.000</td><td><div class="barra-prog"><div class="barra-fill" style="width:93%"></div></div>93%</td></tr>
+          <tr><td>10/06/2025</td><td>ICMS — Cota-Parte</td><td>Estado</td><td><span class="tag tg-v">Transferência</span></td><td>R$ 3.200.000</td><td>R$ 2.880.000</td><td><div class="barra-prog"><div class="barra-fill warn" style="width:90%"></div></div>90%</td></tr>
+          <tr><td>12/06/2025</td><td>SUS — Transferência Fundo a Fundo Saúde</td><td>União</td><td><span class="tag tg-v">Transferência</span></td><td>R$ 1.450.000</td><td>R$ 1.450.000</td><td><div class="barra-prog"><div class="barra-fill" style="width:100%"></div></div>100%</td></tr>
+          <tr><td>15/06/2025</td><td>FNDE — Salário Educação</td><td>União</td><td><span class="tag tg-v">Transferência</span></td><td>R$ 680.000</td><td>R$ 578.000</td><td><div class="barra-prog"><div class="barra-fill warn" style="width:85%"></div></div>85%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pag"><span>Exibindo 6 de 248 registros</span><div style="display:flex;gap:6px"><button class="btn-exp">‹ Anterior</button><button class="btn-exp" style="border-color:var(--verde2);color:var(--verde2)">Próxima ›</button></div></div>
+  </div>
+</section>
+
+<!-- ============ DESPESAS ============ -->
+<section class="secao" id="sec-despesas">
+  <div class="box">
+    <div class="box-hd">
+      <div class="box-titulo"><i class="ti ti-trending-down"></i>Empenhos · Liquidações · Pagamentos</div>
+      <div style="display:flex;gap:7px"><button class="btn-exp"><i class="ti ti-file-spreadsheet"></i>Excel</button><button class="btn-exp"><i class="ti ti-file-type-pdf"></i>PDF</button></div>
+    </div>
+    <div class="filtros">
+      <select class="f-sel"><option>2025</option><option>2024</option></select>
+      <select class="f-sel"><option>Todos os meses</option><option>Junho</option><option>Maio</option></select>
+      <select class="f-sel"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option><option>Administração</option></select>
+      <input class="f-inp" type="text" placeholder="CNPJ/CPF do credor...">
+      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Pesquisar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Nº Empenho</th><th>Data</th><th>Credor</th><th>CNPJ</th><th>Objeto</th><th>Secretaria</th><th>Empenho</th><th>Liquidado</th><th>Pago</th><th>Situação</th></tr></thead>
+        <tbody>
+          <tr><td><a href="#" class="link">2025/04821</a></td><td>02/06/2025</td><td>DISTRIBUIDORA MEDICAMENTOS LTDA</td><td>12.345.678/0001-99</td><td>Aquisição medicamentos hospitalares</td><td>Saúde</td><td>R$ 284.900</td><td>R$ 284.900</td><td>R$ 284.900</td><td><span class="tag tg-v">Pago</span></td></tr>
+          <tr><td><a href="#" class="link">2025/04920</a></td><td>05/06/2025</td><td>CONSTRUTORA BAHIA NOVA S/A</td><td>98.765.432/0001-11</td><td>Pavimentação vias urbanas — Lote 03</td><td>Infraestrutura</td><td>R$ 1.842.000</td><td>R$ 921.000</td><td>R$ 921.000</td><td><span class="tag tg-d">Em execução</span></td></tr>
+          <tr><td><a href="#" class="link">2025/04945</a></td><td>07/06/2025</td><td>ENERGIA ELÉTRICA BAHIA S.A.</td><td>23.456.789/0001-55</td><td>Fornecimento energia elétrica — jun/2025</td><td>Administração</td><td>R$ 143.200</td><td>R$ 143.200</td><td>—</td><td><span class="tag tg-a">A pagar</span></td></tr>
+          <tr><td><a href="#" class="link">2025/05001</a></td><td>08/06/2025</td><td>INSTITUTO FORMAÇÃO PROFESSORES</td><td>34.567.890/0001-22</td><td>Capacitação docente — Programa Municipal</td><td>Educação</td><td>R$ 89.500</td><td>—</td><td>—</td><td><span class="tag tg-ci">Empenhado</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LICITAÇÕES ============ -->
+<section class="secao" id="sec-licitacoes">
+  <div class="box">
+    <div class="box-hd">
+      <div class="box-titulo"><i class="ti ti-gavel"></i>Licitações — Lei 14.133/2021</div>
+      <button class="btn-exp"><i class="ti ti-rss"></i>Feed RSS</button>
+    </div>
+    <div class="filtros">
+      <select class="f-sel"><option>Todas as modalidades</option><option>Pregão Eletrônico</option><option>Concorrência</option><option>Dispensa</option><option>Inexigibilidade</option></select>
+      <select class="f-sel"><option>Todas as situações</option><option>Em andamento</option><option>Homologada</option><option>Deserta/Fracassada</option></select>
+      <select class="f-sel"><option>2025</option><option>2024</option></select>
+      <input class="f-inp" type="text" placeholder="Pesquisar objeto...">
+      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Buscar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Processo</th><th>Modalidade</th><th>Objeto</th><th>Secretaria</th><th>Valor Est.</th><th>Abertura</th><th>Situação</th><th>Documentos</th></tr></thead>
+        <tbody>
+          <tr><td><strong>PE 048/2025</strong></td><td>Pregão Eletrônico</td><td>Material de escritório e expediente</td><td>Administração</td><td>R$ 182.400</td><td>20/06/2025 09h</td><td><span class="tag tg-a">Em andamento</span></td><td><a href="#" class="link" style="font-size:12px">📄 Edital · ETP</a></td></tr>
+          <tr><td><strong>CC 012/2025</strong></td><td>Concorrência</td><td>Construção de UBS Bairro Canabrava</td><td>Saúde</td><td>R$ 4.200.000</td><td>15/07/2025 10h</td><td><span class="tag tg-a">Em andamento</span></td><td><a href="#" class="link" style="font-size:12px">📄 Edital · TR</a></td></tr>
+          <tr><td><strong>PE 045/2025</strong></td><td>Pregão Eletrônico</td><td>Medicamentos e insumos hospitalares</td><td>Saúde</td><td>R$ 1.840.000</td><td>30/05/2025</td><td><span class="tag tg-v">Homologada</span></td><td><a href="#" class="link" style="font-size:12px">📄 Ata · Contrato</a></td></tr>
+          <tr><td><strong>DL 089/2025</strong></td><td>Dispensa</td><td>Manutenção emergencial rede elétrica</td><td>Educação</td><td>R$ 48.200</td><td>02/06/2025</td><td><span class="tag tg-v">Homologada</span></td><td><a href="#" class="link" style="font-size:12px">📄 Justificativa</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTRATOS ============ -->
+<section class="secao" id="sec-contratos">
+  <div class="box">
+    <div class="box-hd"><div class="box-titulo"><i class="ti ti-file-text"></i>Contratos Vigentes</div></div>
+    <div class="filtros">
+      <input class="f-inp" type="text" placeholder="CNPJ ou nome do contratado...">
+      <select class="f-sel"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option></select>
+      <select class="f-sel"><option>Todos</option><option>Vence em 30 dias</option><option>Vence em 60 dias</option></select>
+      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Buscar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Nº</th><th>Contratado</th><th>Objeto</th><th>Fiscal</th><th>Vigência</th><th>Valor Inicial</th><th>Valor Atual</th><th>Situação</th><th>Docs</th></tr></thead>
+        <tbody>
+          <tr><td>045/2025</td><td>CONSTRUTORA BAHIA NOVA S/A</td><td>Pavimentação vias — Lote 03</td><td>Eng. João Meireles</td><td>Jun/25 — Mai/26</td><td>R$ 1.842.000</td><td>R$ 1.842.000</td><td><span class="tag tg-v">Vigente</span></td><td><a href="#" class="link" style="font-size:12px">Ver</a></td></tr>
+          <tr><td>032/2025</td><td>FARMÁCIA DISTRIBUIDORA LTDA</td><td>Medicamentos — Ata RP</td><td>Farm. Ana Souza</td><td>Mar/25 — Mar/26</td><td>R$ 2.400.000</td><td>R$ 2.640.000</td><td><span class="tag tg-v">Vigente</span></td><td><a href="#" class="link" style="font-size:12px">Ver · Aditivo</a></td></tr>
+          <tr><td>018/2024</td><td>LIMPEZA CITY SERVIÇOS</td><td>Limpeza predial e conservação</td><td>Sec. Fernanda Lima</td><td>Jan/24 — <strong style="color:#B07900">30/06/25</strong></td><td>R$ 840.000</td><td>R$ 840.000</td><td><span class="tag tg-d">Vence em 22 dias</span></td><td><a href="#" class="link" style="font-size:12px">Ver</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OBRAS ============ -->
+<section class="secao" id="sec-obras">
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
+    <div>
+      <div class="box" style="margin-bottom:16px">
+        <div class="box-hd"><div class="box-titulo"><i class="ti ti-map-pin"></i>Mapa Interativo de Obras</div></div>
+        <div class="box-body" style="padding:12px">
+          <div class="mapa-ph"><i class="ti ti-map" style="font-size:40px;opacity:.3"></i><span>Mapa interativo — 31 obras georeferenciadas</span><span style="font-size:11px;color:var(--cinza4)">Integração Google Maps API</span></div>
         </div>
-        <div class="box-body">
-          <div class="chart-wrap" style="height:260px">
-            <canvas id="chartDashboard" role="img" aria-label="Gráfico de barras comparando receitas e despesas mensais de 2025"></canvas>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-hd"><div class="box-titulo"><i class="ti ti-building-community"></i>Status das Obras</div></div>
+      <div style="padding:0">
+        <div class="prog-item"><div class="prog-ico ico-v"><i class="ti ti-building"></i></div><div class="prog-info"><div class="prog-nome">UBS Canabrava — Construção</div><div class="prog-bar"><div class="prog-fill prog-pf-v" style="width:42%"></div></div><div class="prog-sub">42% executado · R$ 1,8M · CONSTRUTORA BAHIA NOVA</div></div></div>
+        <div class="prog-item"><div class="prog-ico ico-d"><i class="ti ti-road"></i></div><div class="prog-info"><div class="prog-nome">Pavimentação Bairro Jardim América</div><div class="prog-bar"><div class="prog-fill prog-pf-d" style="width:78%"></div></div><div class="prog-sub">78% executado · R$ 640K</div></div></div>
+        <div class="prog-item"><div class="prog-ico ico-a"><i class="ti ti-school"></i></div><div class="prog-info"><div class="prog-nome">Reforma CEMEI Centro</div><div class="prog-bar"><div class="prog-fill prog-pf-v" style="width:95%"></div></div><div class="prog-sub">95% executado · R$ 320K</div></div></div>
+        <div class="prog-item"><div class="prog-ico" style="background:#FDEAEA;color:#D84040;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px"><i class="ti ti-alert-triangle"></i></div><div class="prog-info"><div class="prog-nome">Ciclovia Av. Principal — <span style="color:#D84040">Paralisada</span></div><div class="prog-bar"><div class="prog-fill prog-pf-r" style="width:35%"></div></div><div class="prog-sub" style="color:#D84040">Paralisada por chuvas · 35% executado</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RH ============ -->
+<section class="secao" id="sec-rh">
+  <div class="kpi-linha">
+    <div class="kpi-c"><span class="kpi-v v">1.204</span><div class="kpi-l">Efetivos</div></div>
+    <div class="kpi-c"><span class="kpi-v a">312</span><div class="kpi-l">Comissionados</div></div>
+    <div class="kpi-c"><span class="kpi-v d">331</span><div class="kpi-l">Contratos Temp.</div></div>
+    <div class="kpi-c"><span class="kpi-v ci">84</span><div class="kpi-l">Estagiários</div></div>
+    <div class="kpi-c"><span class="kpi-v ci">218</span><div class="kpi-l">Terceirizados</div></div>
+    <div class="kpi-c"><span class="kpi-v ci">643</span><div class="kpi-l">Aposentados</div></div>
+  </div>
+  <div class="box">
+    <div class="box-hd">
+      <div class="box-titulo"><i class="ti ti-users"></i>Remuneração de Servidores — Jun/2025</div>
+      <div style="display:flex;gap:7px"><button class="btn-exp"><i class="ti ti-file-spreadsheet"></i>Excel</button><button class="btn-exp"><i class="ti ti-file-type-pdf"></i>PDF</button></div>
+    </div>
+    <div class="filtros">
+      <select class="f-sel"><option>Junho/2025</option><option>Maio/2025</option></select>
+      <select class="f-sel"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option></select>
+      <select class="f-sel"><option>Todos os vínculos</option><option>Efetivo</option><option>Comissionado</option></select>
+      <input class="f-inp" type="text" placeholder="Nome ou matrícula...">
+      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Buscar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Matrícula</th><th>Nome</th><th>Cargo</th><th>Lotação</th><th>Vínculo</th><th>Salário Base</th><th>Gratificações</th><th>Descontos</th><th>Líquido</th></tr></thead>
+        <tbody>
+          <tr><td>00821</td><td>ANA PAULA SANTOS RODRIGUES</td><td>Médica Clínica Geral</td><td>UBS Central</td><td><span class="tag tg-v">Efetivo</span></td><td>R$ 8.420</td><td>R$ 1.260</td><td>R$ 2.340</td><td><strong>R$ 7.340</strong></td></tr>
+          <tr><td>01204</td><td>CARLOS AUGUSTO MENEZES</td><td>Professor Nível II</td><td>EM Dom Pedro II</td><td><span class="tag tg-v">Efetivo</span></td><td>R$ 4.820</td><td>R$ 480</td><td>R$ 1.120</td><td><strong>R$ 4.180</strong></td></tr>
+          <tr><td>02841</td><td>FERNANDA LIMA DA SILVA</td><td>Diretora de Compras</td><td>Administração</td><td><span class="tag tg-a">Comissionado</span></td><td>R$ 6.200</td><td>R$ 0</td><td>R$ 869</td><td><strong>R$ 5.331</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANEJAMENTO ============ -->
+<section class="secao" id="sec-planejamento">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">
+    <div class="box"><div class="box-hd"><div class="box-titulo"><i class="ti ti-calendar-stats"></i>PPA 2022–2025</div></div><div class="box-body"><p style="color:var(--cinza5);font-size:13px;margin-bottom:12px">Plano Plurianual vigente — 4 eixos estratégicos</p><button class="btn-busca"><i class="ti ti-download"></i>Baixar PDF</button></div></div>
+    <div class="box"><div class="box-hd"><div class="box-titulo"><i class="ti ti-clipboard-list"></i>LDO 2025</div></div><div class="box-body"><p style="color:var(--cinza5);font-size:13px;margin-bottom:12px">Lei de Diretrizes Orçamentárias — dez/2024</p><button class="btn-busca"><i class="ti ti-download"></i>Baixar PDF</button></div></div>
+    <div class="box"><div class="box-hd"><div class="box-titulo"><i class="ti ti-report-money"></i>LOA 2025</div></div><div class="box-body"><p style="color:var(--cinza5);font-size:13px;margin-bottom:12px">Lei Orçamentária Anual — R$ 68,4 milhões</p><button class="btn-busca"><i class="ti ti-download"></i>Baixar PDF</button></div></div>
+    <div class="box"><div class="box-hd"><div class="box-titulo"><i class="ti ti-chart-pie"></i>RREO Jun/2025</div></div><div class="box-body"><p style="color:var(--cinza5);font-size:13px;margin-bottom:12px">Relatório Resumido Exec. Orçamentária</p><button class="btn-busca"><i class="ti ti-download"></i>Baixar PDF</button></div></div>
+    <div class="box"><div class="box-hd"><div class="box-titulo"><i class="ti ti-file-certificate"></i>RGF 1º Quad/2025</div></div><div class="box-body"><p style="color:var(--cinza5);font-size:13px;margin-bottom:12px">Relatório de Gestão Fiscal — LRF atendida</p><button class="btn-busca"><i class="ti ti-download"></i>Baixar PDF</button></div></div>
+    <div class="box"><div class="box-hd"><div class="box-titulo"><i class="ti ti-calculator"></i>Prestação de Contas 2024</div></div><div class="box-body"><p style="color:var(--cinza5);font-size:13px;margin-bottom:12px">Regular — TCM/BA Acórdão 1245/2025</p><button class="btn-busca"><i class="ti ti-download"></i>Baixar</button></div></div>
+  </div>
+</section>
+
+<!-- ============ SIC ============ -->
+<section class="secao" id="sec-sic">
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
+    <div class="box">
+      <div class="box-hd"><div class="box-titulo"><i class="ti ti-mail"></i>Novo Pedido de Acesso à Informação — e-SIC</div></div>
+      <div class="box-body">
+        <div class="sic-form">
+          <div class="form-row">
+            <div class="form-grupo"><label class="form-label">Nome completo *</label><input class="form-ctrl" type="text" placeholder="Seu nome completo"></div>
+            <div class="form-grupo"><label class="form-label">CPF *</label><input class="form-ctrl" type="text" placeholder="000.000.000-00"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-grupo"><label class="form-label">E-mail *</label><input class="form-ctrl" type="email" placeholder="seu@email.com"></div>
+            <div class="form-grupo"><label class="form-label">Telefone</label><input class="form-ctrl" type="text" placeholder="(00) 00000-0000"></div>
+          </div>
+          <div class="form-grupo"><label class="form-label">Órgão / Secretaria</label><select class="form-ctrl"><option>Selecione...</option><option>Secretaria de Saúde</option><option>Secretaria de Educação</option><option>Secretaria de Infraestrutura</option><option>Gabinete do Prefeito</option></select></div>
+          <div class="form-grupo"><label class="form-label">Informação solicitada *</label><textarea class="form-ctrl" placeholder="Descreva as informações que você precisa..."></textarea></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+            <span style="font-size:12px;color:var(--cinza5)">⏱ Prazo: até 20 dias úteis (LAI art. 11)</span>
+            <button class="btn-busca"><i class="ti ti-send"></i>Enviar Pedido</button>
           </div>
         </div>
       </div>
-
-      <div class="box">
-        <div class="box-header">
-          <div class="box-title"><i class="ti ti-activity"></i> Atividade Recente</div>
-        </div>
+    </div>
+    <div>
+      <div class="box" style="margin-bottom:14px">
+        <div class="box-hd"><div class="box-titulo"><i class="ti ti-chart-bar"></i>Painel LAI 2025</div></div>
         <div class="box-body" style="padding:8px 16px">
-          <ul class="atividade-lista">
-            <li class="atividade-item">
-              <div class="ativ-dot ativ-dot-verde"><i class="ti ti-file-plus"></i></div>
-              <div class="ativ-info">
-                <div class="ativ-titulo">Novo contrato publicado — Pavimentação Rua das Flores</div>
-                <div class="ativ-tempo">há 18 minutos</div>
-              </div>
-            </li>
-            <li class="atividade-item">
-              <div class="ativ-dot ativ-dot-dourado"><i class="ti ti-gavel"></i></div>
-              <div class="ativ-info">
-                <div class="ativ-titulo">Pregão 045/2025 homologado — Aquisição de medicamentos</div>
-                <div class="ativ-tempo">há 2 horas</div>
-              </div>
-            </li>
-            <li class="atividade-item">
-              <div class="ativ-dot ativ-dot-azul"><i class="ti ti-mail"></i></div>
-              <div class="ativ-info">
-                <div class="ativ-titulo">e-SIC #2025.0342 respondido dentro do prazo</div>
-                <div class="ativ-tempo">há 4 horas</div>
-              </div>
-            </li>
-            <li class="atividade-item">
-              <div class="ativ-dot ativ-dot-verde"><i class="ti ti-check"></i></div>
-              <div class="ativ-info">
-                <div class="ativ-titulo">Folha de pagamento jun/2025 publicada</div>
-                <div class="ativ-tempo">hoje 07:30</div>
-              </div>
-            </li>
-            <li class="atividade-item">
-              <div class="ativ-dot ativ-dot-cinza"><i class="ti ti-alert-triangle"></i></div>
-              <div class="ativ-info">
-                <div class="ativ-titulo">PNTP: critério 3.2.4 necessita atualização</div>
-                <div class="ativ-tempo">ontem 15:20</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- IA CHAT MINI -->
-    <div class="ia-box">
-      <div class="ia-header">
-        <i class="ti ti-robot"></i>
-        <span>Assistente de Transparência — IA Cidadã</span>
-        <span class="ia-header-tag">BETA</span>
-      </div>
-      <div class="ia-sugestoes">
-        <button class="sugestao-pill" onclick="enviarPergunta('Quanto foi gasto com combustível em 2025?')">💬 Gastos com combustível</button>
-        <button class="sugestao-pill" onclick="enviarPergunta('Quais contratos vencem em 30 dias?')">📋 Contratos a vencer</button>
-        <button class="sugestao-pill" onclick="enviarPergunta('Quanto foi arrecadado de IPTU?')">💰 Arrecadação IPTU</button>
-        <button class="sugestao-pill" onclick="enviarPergunta('Quem recebeu diárias este mês?')">✈️ Diárias do mês</button>
-      </div>
-      <div class="ia-chat" id="ia-chat">
-        <div class="msg msg-bot">Olá! Sou o Assistente de Transparência da Prefeitura. Posso responder perguntas sobre receitas, despesas, contratos, licitações, servidores e muito mais. Como posso ajudar?</div>
-      </div>
-      <div class="ia-input-area">
-        <input class="ia-input" type="text" id="ia-input" placeholder="Digite sua pergunta sobre as finanças municipais..." onkeypress="if(event.key==='Enter')enviarIA()">
-        <button class="btn-send" onclick="enviarIA()" aria-label="Enviar pergunta"><i class="ti ti-send"></i></button>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ============ RECEITAS ============ -->
-  <section class="secao" id="secao-receitas">
-    <div class="box">
-      <div class="box-header">
-        <div class="box-title"><i class="ti ti-trending-up"></i> Transparência das Receitas</div>
-        <div style="display:flex;gap:8px">
-          <button class="btn-export"><i class="ti ti-file-spreadsheet"></i> Excel</button>
-          <button class="btn-export"><i class="ti ti-file-type-pdf"></i> PDF</button>
-          <button class="btn-export"><i class="ti ti-api"></i> API JSON</button>
-        </div>
-      </div>
-      <div class="filtros-bar">
-        <select class="filtro-select"><option>2025</option><option>2024</option><option>2023</option></select>
-        <select class="filtro-select"><option>Todos os meses</option><option>Janeiro</option><option>Fevereiro</option><option>Março</option><option>Abril</option><option>Maio</option><option>Junho</option></select>
-        <select class="filtro-select"><option>Todas as fontes</option><option>Tesouro Municipal</option><option>Transferências União</option><option>Transferências Estado</option><option>Outras</option></select>
-        <input class="filtro-input" type="text" placeholder="Pesquisar natureza da receita...">
-        <button class="btn-pesquisar"><i class="ti ti-search"></i> Pesquisar</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="table-full">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Natureza da Receita</th>
-              <th>Fonte</th>
-              <th>Categoria Econômica</th>
-              <th>Previsto</th>
-              <th>Arrecadado</th>
-              <th>% Execução</th>
-            </tr>
-          </thead>
-          <tbody id="tb-receitas">
-            <tr><td>01/06/2025</td><td>IPTU - Imposto Predial e Territorial Urbano</td><td>Tesouro</td><td><span class="tag tag-azul">Tributária</span></td><td>R$ 2.840.000</td><td>R$ 2.612.800</td><td><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>92%</td></tr>
-            <tr><td>01/06/2025</td><td>ISS - Imposto sobre Serviços</td><td>Tesouro</td><td><span class="tag tag-azul">Tributária</span></td><td>R$ 1.920.000</td><td>R$ 1.843.200</td><td><div class="progress-bar"><div class="progress-fill" style="width:96%"></div></div>96%</td></tr>
-            <tr><td>05/06/2025</td><td>FPM - Fundo de Participação dos Municípios</td><td>União</td><td><span class="tag tag-verde">Transferência</span></td><td>R$ 8.100.000</td><td>R$ 7.533.000</td><td><div class="progress-bar"><div class="progress-fill" style="width:93%"></div></div>93%</td></tr>
-            <tr><td>10/06/2025</td><td>ICMS - Cota-Parte</td><td>Estado</td><td><span class="tag tag-verde">Transferência</span></td><td>R$ 3.200.000</td><td>R$ 2.880.000</td><td><div class="progress-bar"><div class="progress-fill warn" style="width:90%"></div></div>90%</td></tr>
-            <tr><td>12/06/2025</td><td>SUS - Transferência Fundo a Fundo Saúde</td><td>União</td><td><span class="tag tag-verde">Transferência</span></td><td>R$ 1.450.000</td><td>R$ 1.450.000</td><td><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>100%</td></tr>
-            <tr><td>15/06/2025</td><td>FNDE - Salário Educação</td><td>União</td><td><span class="tag tag-verde">Transferência</span></td><td>R$ 680.000</td><td>R$ 578.000</td><td><div class="progress-bar"><div class="progress-fill warn" style="width:85%"></div></div>85%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="padding:12px 20px;border-top:1px solid var(--borda);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--cinza-60)">
-        <span>Exibindo 6 de 248 registros</span>
-        <div style="display:flex;gap:6px">
-          <button class="btn-export">‹ Anterior</button>
-          <button class="btn-export" style="border-color:var(--verde);color:var(--verde)">Próxima ›</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ DESPESAS ============ -->
-  <section class="secao" id="secao-despesas">
-    <div class="box">
-      <div class="box-header">
-        <div class="box-title"><i class="ti ti-trending-down"></i> Empenhos, Liquidações e Pagamentos</div>
-        <div style="display:flex;gap:8px">
-          <button class="btn-export"><i class="ti ti-file-spreadsheet"></i> Excel</button>
-          <button class="btn-export"><i class="ti ti-file-type-pdf"></i> PDF</button>
-        </div>
-      </div>
-      <div class="filtros-bar">
-        <select class="filtro-select"><option>2025</option><option>2024</option></select>
-        <select class="filtro-select"><option>Todos os meses</option><option>Junho</option><option>Maio</option></select>
-        <select class="filtro-select"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option><option>Administração</option></select>
-        <input class="filtro-input" type="text" placeholder="CNPJ/CPF do credor...">
-        <button class="btn-pesquisar"><i class="ti ti-search"></i> Pesquisar</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="table-full">
-          <thead>
-            <tr>
-              <th>Nº Empenho</th>
-              <th>Data</th>
-              <th>Credor</th>
-              <th>CNPJ/CPF</th>
-              <th>Objeto</th>
-              <th>Secretaria</th>
-              <th>Valor Empenho</th>
-              <th>Liquidado</th>
-              <th>Pago</th>
-              <th>Situação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="#" style="color:var(--azul-claro)">2025/04821</a></td>
-              <td>02/06/2025</td>
-              <td>DISTRIBUIDORA MEDICAMENTOS LTDA</td>
-              <td>12.345.678/0001-99</td>
-              <td>Aquisição de medicamentos hospitalares</td>
-              <td>Saúde</td>
-              <td>R$ 284.900</td>
-              <td>R$ 284.900</td>
-              <td>R$ 284.900</td>
-              <td><span class="tag tag-verde">Pago</span></td>
-            </tr>
-            <tr>
-              <td><a href="#" style="color:var(--azul-claro)">2025/04920</a></td>
-              <td>05/06/2025</td>
-              <td>CONSTRUTORA BAHIA NOVA S/A</td>
-              <td>98.765.432/0001-11</td>
-              <td>Pavimentação de vias urbanas — Lote 03</td>
-              <td>Infraestrutura</td>
-              <td>R$ 1.842.000</td>
-              <td>R$ 921.000</td>
-              <td>R$ 921.000</td>
-              <td><span class="tag tag-laranja">Em execução</span></td>
-            </tr>
-            <tr>
-              <td><a href="#" style="color:var(--azul-claro)">2025/04945</a></td>
-              <td>07/06/2025</td>
-              <td>ENERGIA ELÉTRICA BAHIA S.A.</td>
-              <td>23.456.789/0001-55</td>
-              <td>Fornecimento de energia elétrica — jun/2025</td>
-              <td>Administração</td>
-              <td>R$ 143.200</td>
-              <td>R$ 143.200</td>
-              <td>—</td>
-              <td><span class="tag tag-azul">A pagar</span></td>
-            </tr>
-            <tr>
-              <td><a href="#" style="color:var(--azul-claro)">2025/05001</a></td>
-              <td>08/06/2025</td>
-              <td>INSTITUTO FORMAÇÃO PROFESSORES</td>
-              <td>34.567.890/0001-22</td>
-              <td>Capacitação docente — Programa Municipal</td>
-              <td>Educação</td>
-              <td>R$ 89.500</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="tag tag-cinza">Empenhado</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LICITAÇÕES ============ -->
-  <section class="secao" id="secao-licitacoes">
-    <div class="box">
-      <div class="box-header">
-        <div class="box-title"><i class="ti ti-gavel"></i> Licitações — Lei 14.133/2021</div>
-        <button class="btn-export"><i class="ti ti-rss"></i> Feed RSS</button>
-      </div>
-      <div class="filtros-bar">
-        <select class="filtro-select"><option>Todas as modalidades</option><option>Pregão Eletrônico</option><option>Concorrência</option><option>Dispensa</option><option>Inexigibilidade</option></select>
-        <select class="filtro-select"><option>Todas as situações</option><option>Em andamento</option><option>Homologada</option><option>Deserta/Fracassada</option><option>Cancelada</option></select>
-        <select class="filtro-select"><option>2025</option><option>2024</option></select>
-        <input class="filtro-input" type="text" placeholder="Pesquisar objeto...">
-        <button class="btn-pesquisar"><i class="ti ti-search"></i> Buscar</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="table-full">
-          <thead>
-            <tr>
-              <th>Processo</th>
-              <th>Modalidade</th>
-              <th>Objeto</th>
-              <th>Secretaria</th>
-              <th>Valor Estimado</th>
-              <th>Abertura</th>
-              <th>Situação</th>
-              <th>Documentos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>PE 048/2025</strong></td>
-              <td>Pregão Eletrônico</td>
-              <td>Material de escritório e expediente</td>
-              <td>Administração</td>
-              <td>R$ 182.400</td>
-              <td>20/06/2025 09h</td>
-              <td><span class="tag tag-azul">Em andamento</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Edital · Aviso · ETP</a></td>
-            </tr>
-            <tr>
-              <td><strong>CC 012/2025</strong></td>
-              <td>Concorrência</td>
-              <td>Construção de UBS no Bairro Canabrava</td>
-              <td>Saúde</td>
-              <td>R$ 4.200.000</td>
-              <td>15/07/2025 10h</td>
-              <td><span class="tag tag-azul">Em andamento</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Edital · TR · ETP</a></td>
-            </tr>
-            <tr>
-              <td><strong>PE 045/2025</strong></td>
-              <td>Pregão Eletrônico</td>
-              <td>Aquisição de medicamentos e insumos hospitalares</td>
-              <td>Saúde</td>
-              <td>R$ 1.840.000</td>
-              <td>30/05/2025</td>
-              <td><span class="tag tag-verde">Homologada</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Ata · Contrato</a></td>
-            </tr>
-            <tr>
-              <td><strong>DL 089/2025</strong></td>
-              <td>Dispensa de Licitação</td>
-              <td>Manutenção emergencial rede elétrica EE Municipal</td>
-              <td>Educação</td>
-              <td>R$ 48.200</td>
-              <td>02/06/2025</td>
-              <td><span class="tag tag-verde">Homologada</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Justificativa</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTRATOS ============ -->
-  <section class="secao" id="secao-contratos">
-    <div class="box">
-      <div class="box-header">
-        <div class="box-title"><i class="ti ti-file-text"></i> Contratos Vigentes</div>
-      </div>
-      <div class="filtros-bar">
-        <input class="filtro-input" type="text" placeholder="CNPJ ou nome do contratado...">
-        <select class="filtro-select"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option></select>
-        <select class="filtro-select"><option>Todos</option><option>Vence em 30 dias</option><option>Vence em 60 dias</option></select>
-        <button class="btn-pesquisar"><i class="ti ti-search"></i> Buscar</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="table-full">
-          <thead>
-            <tr>
-              <th>Nº Contrato</th>
-              <th>Contratado</th>
-              <th>Objeto</th>
-              <th>Fiscal</th>
-              <th>Vigência</th>
-              <th>Valor Inicial</th>
-              <th>Valor Atual</th>
-              <th>Situação</th>
-              <th>Documentos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>045/2025</td>
-              <td>CONSTRUTORA BAHIA NOVA S/A</td>
-              <td>Pavimentação vias urbanas — Lote 03</td>
-              <td>Eng. João Meireles</td>
-              <td>Jun/2025 — Mai/2026</td>
-              <td>R$ 1.842.000</td>
-              <td>R$ 1.842.000</td>
-              <td><span class="tag tag-verde">Vigente</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Ver</a></td>
-            </tr>
-            <tr>
-              <td>032/2025</td>
-              <td>FARMÁCIA DISTRIBUIDORA LTDA</td>
-              <td>Medicamentos — Ata de Registro de Preços</td>
-              <td>Farm. Ana Souza</td>
-              <td>Mar/2025 — Mar/2026</td>
-              <td>R$ 2.400.000</td>
-              <td>R$ 2.640.000</td>
-              <td><span class="tag tag-verde">Vigente</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Ver · Aditivo</a></td>
-            </tr>
-            <tr>
-              <td>018/2024</td>
-              <td>LIMPEZA CITY SERVIÇOS</td>
-              <td>Serviços de limpeza predial e conservação</td>
-              <td>Sec. Fernanda Lima</td>
-              <td>Jan/2024 — <strong style="color:#B07900">30/06/2025</strong></td>
-              <td>R$ 840.000</td>
-              <td>R$ 840.000</td>
-              <td><span class="tag tag-laranja">Vence em 22 dias</span></td>
-              <td><a href="#" style="color:var(--verde);font-size:12px">📄 Ver</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ OBRAS ============ -->
-  <section class="secao" id="secao-obras">
-    <div class="painel-grid">
-      <div>
-        <div class="box" style="margin-bottom:20px">
-          <div class="box-header">
-            <div class="box-title"><i class="ti ti-map-pin"></i> Mapa de Obras</div>
-          </div>
-          <div class="box-body" style="padding:12px">
-            <div class="mapa-placeholder">
-              <i class="ti ti-map" style="font-size:36px;opacity:0.4"></i>
-              <span>Mapa interativo de obras públicas</span>
-              <span style="font-size:11px">Integração com Google Maps — 31 obras mapeadas</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="box">
-          <div class="box-header">
-            <div class="box-title"><i class="ti ti-building-community"></i> Obras em Andamento</div>
-          </div>
-          <div class="box-body" style="padding:8px 16px">
-            <ul class="atividade-lista">
-              <li class="atividade-item">
-                <div class="ativ-dot ativ-dot-verde"><i class="ti ti-building"></i></div>
-                <div class="ativ-info">
-                  <div class="ativ-titulo">UBS Canabrava — Construção</div>
-                  <div style="margin-top:4px"><div class="progress-bar"><div class="progress-fill" style="width:42%"></div></div></div>
-                  <div class="ativ-tempo">42% executado · R$ 1,8M</div>
-                </div>
-              </li>
-              <li class="atividade-item">
-                <div class="ativ-dot ativ-dot-dourado"><i class="ti ti-road"></i></div>
-                <div class="ativ-info">
-                  <div class="ativ-titulo">Pavimentação Bairro Jardim América</div>
-                  <div style="margin-top:4px"><div class="progress-bar"><div class="progress-fill warn" style="width:78%"></div></div></div>
-                  <div class="ativ-tempo">78% executado · R$ 640K</div>
-                </div>
-              </li>
-              <li class="atividade-item">
-                <div class="ativ-dot ativ-dot-azul"><i class="ti ti-school"></i></div>
-                <div class="ativ-info">
-                  <div class="ativ-titulo">Reforma CEMEI Centro</div>
-                  <div style="margin-top:4px"><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
-                  <div class="ativ-tempo">95% executado · R$ 320K</div>
-                </div>
-              </li>
-              <li class="atividade-item">
-                <div class="ativ-dot" style="background:#FDEAEA;color:#D84040"><i class="ti ti-alert-triangle"></i></div>
-                <div class="ativ-info">
-                  <div class="ativ-titulo">Ciclovia Av. Principal — Paralisada</div>
-                  <div style="margin-top:4px"><div class="progress-bar"><div class="progress-fill danger" style="width:35%"></div></div></div>
-                  <div class="ativ-tempo" style="color:#D84040">Paralisada por chuvas · 35% executado</div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ RECURSOS HUMANOS ============ -->
-  <section class="secao" id="secao-rh">
-    <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-bottom:20px">
-      <div class="card-metrica verde"><div class="card-label">Efetivos</div><div class="card-valor">1.204</div></div>
-      <div class="card-metrica azul"><div class="card-label">Comissionados</div><div class="card-valor">312</div></div>
-      <div class="card-metrica dourado"><div class="card-label">Contratos Temp.</div><div class="card-valor">331</div></div>
-      <div class="card-metrica cinza"><div class="card-label">Estagiários</div><div class="card-valor">84</div></div>
-      <div class="card-metrica cinza"><div class="card-label">Terceirizados</div><div class="card-valor">218</div></div>
-      <div class="card-metrica cinza"><div class="card-label">Aposentados</div><div class="card-valor">643</div></div>
-    </div>
-    <div class="box">
-      <div class="box-header">
-        <div class="box-title"><i class="ti ti-users"></i> Remuneração de Servidores</div>
-        <div style="display:flex;gap:8px">
-          <button class="btn-export"><i class="ti ti-file-spreadsheet"></i> Excel</button>
-          <button class="btn-export"><i class="ti ti-file-type-pdf"></i> PDF</button>
-        </div>
-      </div>
-      <div class="filtros-bar">
-        <select class="filtro-select"><option>Junho/2025</option><option>Maio/2025</option></select>
-        <select class="filtro-select"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option></select>
-        <select class="filtro-select"><option>Todos os vínculos</option><option>Efetivo</option><option>Comissionado</option></select>
-        <input class="filtro-input" type="text" placeholder="Nome ou matrícula...">
-        <button class="btn-pesquisar"><i class="ti ti-search"></i> Buscar</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="table-full">
-          <thead>
-            <tr>
-              <th>Matrícula</th><th>Nome</th><th>Cargo</th><th>Lotação</th><th>Vínculo</th>
-              <th>Salário Base</th><th>Gratificações</th><th>Descontos</th><th>Líquido</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>00821</td><td>ANA PAULA SANTOS RODRIGUES</td><td>Médica Clínica Geral</td><td>UBS Central</td><td><span class="tag tag-verde">Efetivo</span></td><td>R$ 8.420</td><td>R$ 1.260</td><td>R$ 2.340</td><td><strong>R$ 7.340</strong></td></tr>
-            <tr><td>01204</td><td>CARLOS AUGUSTO MENEZES</td><td>Professor Nível II</td><td>EM Dom Pedro II</td><td><span class="tag tag-verde">Efetivo</span></td><td>R$ 4.820</td><td>R$ 480</td><td>R$ 1.120</td><td><strong>R$ 4.180</strong></td></tr>
-            <tr><td>02841</td><td>FERNANDA LIMA DA SILVA</td><td>Diretora de Compras</td><td>Administração</td><td><span class="tag tag-azul">Comissionado</span></td><td>R$ 6.200</td><td>R$ 0</td><td>R$ 869</td><td><strong>R$ 5.331</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PLANEJAMENTO ============ -->
-  <section class="secao" id="secao-planejamento">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
-      <div class="box">
-        <div class="box-header"><div class="box-title"><i class="ti ti-calendar-stats"></i> PPA 2022–2025</div></div>
-        <div class="box-body" style="font-size:13px">
-          <p style="color:var(--cinza-60);margin-bottom:12px">Plano Plurianual vigente — 4 eixos estratégicos</p>
-          <a href="#" class="btn-pesquisar" style="display:inline-flex;text-decoration:none"><i class="ti ti-download"></i> Baixar PDF</a>
+          <div class="crit-check"><span>Solicitações recebidas</span><strong>342</strong></div>
+          <div class="crit-check"><span>Respondidas no prazo</span><span class="cs-ok"><i class="ti ti-check"></i>328 (96%)</span></div>
+          <div class="crit-check"><span>Recursos impetrados</span><span>14</span></div>
+          <div class="crit-check"><span>Em aberto</span><span class="cs-warn"><i class="ti ti-clock"></i>8</span></div>
+          <div class="crit-check"><span>Tempo médio resposta</span><strong>6,4 dias</strong></div>
         </div>
       </div>
       <div class="box">
-        <div class="box-header"><div class="box-title"><i class="ti ti-clipboard-list"></i> LDO 2025</div></div>
-        <div class="box-body" style="font-size:13px">
-          <p style="color:var(--cinza-60);margin-bottom:12px">Lei de Diretrizes Orçamentárias — aprovada em dez/2024</p>
-          <a href="#" class="btn-pesquisar" style="display:inline-flex;text-decoration:none"><i class="ti ti-download"></i> Baixar PDF</a>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-header"><div class="box-title"><i class="ti ti-report-money"></i> LOA 2025</div></div>
-        <div class="box-body" style="font-size:13px">
-          <p style="color:var(--cinza-60);margin-bottom:12px">Lei Orçamentária Anual — R$ 68,4 milhões</p>
-          <a href="#" class="btn-pesquisar" style="display:inline-flex;text-decoration:none"><i class="ti ti-download"></i> Baixar PDF</a>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-header"><div class="box-title"><i class="ti ti-chart-pie"></i> RREO — Jun/2025</div></div>
-        <div class="box-body" style="font-size:13px">
-          <p style="color:var(--cinza-60);margin-bottom:12px">Relatório Resumido de Execução Orçamentária</p>
-          <a href="#" class="btn-pesquisar" style="display:inline-flex;text-decoration:none"><i class="ti ti-download"></i> Baixar PDF</a>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-header"><div class="box-title"><i class="ti ti-file-certificate"></i> RGF — 1º Quad/2025</div></div>
-        <div class="box-body" style="font-size:13px">
-          <p style="color:var(--cinza-60);margin-bottom:12px">Relatório de Gestão Fiscal — LRF atendida</p>
-          <a href="#" class="btn-pesquisar" style="display:inline-flex;text-decoration:none"><i class="ti ti-download"></i> Baixar PDF</a>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-header"><div class="box-title"><i class="ti ti-calculator"></i> Prestação de Contas 2024</div></div>
-        <div class="box-body" style="font-size:13px">
-          <p style="color:var(--cinza-60);margin-bottom:12px">Julgada regular pelo TCM/BA — Acórdão 1245/2025</p>
-          <a href="#" class="btn-pesquisar" style="display:inline-flex;text-decoration:none"><i class="ti ti-download"></i> Baixar</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ e-SIC / OUVIDORIA ============ -->
-  <section class="secao" id="secao-sic">
-    <div class="painel-grid">
-      <div class="box">
-        <div class="box-header">
-          <div class="box-title"><i class="ti ti-mail"></i> Novo Pedido de Acesso à Informação — e-SIC</div>
-        </div>
-        <div class="box-body">
-          <div class="sic-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Nome completo *</label>
-                <input class="form-control" type="text" placeholder="Seu nome completo">
-              </div>
-              <div class="form-group">
-                <label class="form-label">CPF *</label>
-                <input class="form-control" type="text" placeholder="000.000.000-00">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">E-mail *</label>
-                <input class="form-control" type="email" placeholder="seu@email.com">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Telefone</label>
-                <input class="form-control" type="text" placeholder="(00) 00000-0000">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Órgão / Secretaria</label>
-              <select class="form-control">
-                <option>Selecione...</option>
-                <option>Secretaria de Saúde</option>
-                <option>Secretaria de Educação</option>
-                <option>Secretaria de Infraestrutura</option>
-                <option>Secretaria de Administração</option>
-                <option>Gabinete do Prefeito</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Informação solicitada *</label>
-              <textarea class="form-control" placeholder="Descreva detalhadamente as informações que você precisa..."></textarea>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span style="font-size:12px;color:var(--cinza-60)">⏱ Prazo de resposta: até 20 dias úteis (LAI art. 11)</span>
-              <button class="btn-pesquisar"><i class="ti ti-send"></i> Enviar Pedido</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="box" style="margin-bottom:16px">
-          <div class="box-header">
-            <div class="box-title"><i class="ti ti-chart-bar"></i> Painel Estatístico LAI</div>
-          </div>
-          <div class="box-body">
-            <div class="criterio-check">
-              <span class="crit-nome">Solicitações recebidas (2025)</span>
-              <strong>342</strong>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Respondidas no prazo</span>
-              <span class="crit-status s-ok"><i class="ti ti-check"></i> 328 (96%)</span>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Recursos impetrados</span>
-              <span>14</span>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Em aberto</span>
-              <span class="crit-status s-warn"><i class="ti ti-clock"></i> 8</span>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Tempo médio resposta</span>
-              <strong>6,4 dias</strong>
-            </div>
-          </div>
-        </div>
-        <div class="box">
-          <div class="box-header">
-            <div class="box-title"><i class="ti ti-speakerphone"></i> Ouvidoria</div>
-          </div>
-          <div class="box-body">
-            <div class="criterio-check">
-              <span class="crit-nome">Reclamações</span><strong>84</strong>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Denúncias</span><strong>23</strong>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Sugestões</span><strong>41</strong>
-            </div>
-            <div class="criterio-check">
-              <span class="crit-nome">Elogios</span><strong style="color:var(--verde)">67</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONFORMIDADE PNTP ============ -->
-  <section class="secao" id="secao-pntp">
-    <div class="painel-grid">
-      <div class="box">
-        <div class="box-header">
-          <div class="box-title"><i class="ti ti-shield-check"></i> Radar da Transparência — PNTP 2026</div>
-        </div>
-        <div class="box-body">
-          <div class="chart-wrap" style="height:300px;margin-bottom:16px">
-            <canvas id="chartRadar" role="img" aria-label="Gráfico radar de conformidade com o PNTP 2026 por categoria"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-header">
-          <div class="box-title"><i class="ti ti-checklist"></i> Critérios por Categoria</div>
-        </div>
+        <div class="box-hd"><div class="box-titulo"><i class="ti ti-speakerphone"></i>Ouvidoria</div></div>
         <div class="box-body" style="padding:8px 16px">
-          <div class="criterio-check"><span class="crit-nome">Transparência Ativa</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 100%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Transparência Passiva (SIC)</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 96%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Receitas e Despesas</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 98%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Licitações e Contratos</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 97%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Recursos Humanos</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 95%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Planejamento e Orçamento</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 100%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Acessibilidade (WCAG 2.1)</span><span class="crit-status s-warn"><i class="ti ti-alert-triangle"></i> 82%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Governo Digital / Dados Abertos</span><span class="crit-status s-warn"><i class="ti ti-alert-triangle"></i> 78%</span></div>
-          <div class="criterio-check"><span class="crit-nome">LGPD</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 91%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Obras Públicas</span><span class="crit-status s-warn"><i class="ti ti-alert-triangle"></i> 85%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Saúde</span><span class="crit-status s-ok"><i class="ti ti-check"></i> 93%</span></div>
-          <div class="criterio-check"><span class="crit-nome">Educação</span><span class="crit-status s-err"><i class="ti ti-x"></i> 70% ⚠</span></div>
+          <div class="crit-check"><span>Reclamações</span><strong>84</strong></div>
+          <div class="crit-check"><span>Denúncias</span><strong>23</strong></div>
+          <div class="crit-check"><span>Sugestões</span><strong>41</strong></div>
+          <div class="crit-check"><span>Elogios</span><strong style="color:var(--verde2)">67</strong></div>
         </div>
       </div>
     </div>
-    <div class="box" style="margin-top:20px">
-      <div class="box-header">
-        <div class="box-title"><i class="ti ti-alert-triangle"></i> Pendências para 100% do PNTP</div>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="table-full">
-          <thead>
-            <tr><th>Código</th><th>Critério</th><th>Categoria</th><th>Prazo Sugerido</th><th>Risco</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>EDU-3.2.4</td><td>Publicar indicadores de aprendizagem por escola</td><td>Educação</td><td>30/06/2025</td><td><span class="tag tag-vermelho">Alto</span></td></tr>
-            <tr><td>EDU-4.1.1</td><td>Cardápio da merenda escolar por unidade</td><td>Educação</td><td>15/07/2025</td><td><span class="tag tag-laranja">Médio</span></td></tr>
-            <tr><td>ACC-2.3</td><td>Implementar VLibras em todas as páginas</td><td>Acessibilidade</td><td>01/07/2025</td><td><span class="tag tag-laranja">Médio</span></td></tr>
-            <tr><td>GOV-1.4.2</td><td>API REST pública documentada (Swagger)</td><td>Dados Abertos</td><td>31/07/2025</td><td><span class="tag tag-laranja">Médio</span></td></tr>
-            <tr><td>OBR-5.1</td><td>Fotos mensais de todas as obras publicadas</td><td>Obras</td><td>Mensal</td><td><span class="tag tag-azul">Baixo</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ IA CIDADÃ (página dedicada) ============ -->
-  <section class="secao" id="secao-ia">
-    <div style="max-width:800px;margin:0 auto">
-      <div style="text-align:center;margin-bottom:28px">
-        <div style="font-size:48px;margin-bottom:8px">🤖</div>
-        <h2 style="font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--verde-escuro)">Assistente de Transparência</h2>
-        <p style="color:var(--cinza-60);font-size:14px">Consulte dados públicos municipais em linguagem natural</p>
-      </div>
-      <div class="ia-box">
-        <div class="ia-header">
-          <i class="ti ti-robot"></i>
-          <span>IA Cidadã — Portal da Transparência</span>
-          <span class="ia-header-tag">PNTP CRITÉRIO 7.3</span>
-        </div>
-        <div class="ia-sugestoes" style="padding-top:12px">
-          <button class="sugestao-pill" onclick="enviarPergunta('Quanto foi gasto com combustível em 2025?')">Gastos com combustível</button>
-          <button class="sugestao-pill" onclick="enviarPergunta('Qual o total de receitas de IPTU em 2025?')">Arrecadação de IPTU</button>
-          <button class="sugestao-pill" onclick="enviarPergunta('Quem recebeu diárias este mês?')">Diárias do mês</button>
-          <button class="sugestao-pill" onclick="enviarPergunta('Quais contratos vencem nos próximos 30 dias?')">Contratos a vencer</button>
-          <button class="sugestao-pill" onclick="enviarPergunta('Qual o maior contrato da Secretaria de Saúde?')">Saúde — maiores contratos</button>
-          <button class="sugestao-pill" onclick="enviarPergunta('Qual a nota do PNTP do município?')">Nota PNTP</button>
-        </div>
-        <div class="ia-chat" id="ia-chat-2" style="max-height:380px">
-          <div class="msg msg-bot">Olá! Sou o Assistente de Transparência com IA. Posso consultar receitas, despesas, licitações, contratos, servidores, obras e indicadores de conformidade do município. O que você gostaria de saber?</div>
-        </div>
-        <div class="ia-input-area">
-          <input class="ia-input" type="text" id="ia-input-2" placeholder="Ex: Quanto gastamos com pessoal em maio de 2025?" onkeypress="if(event.key==='Enter')enviarIA2()">
-          <button class="btn-send" onclick="enviarIA2()" aria-label="Enviar"><i class="ti ti-send"></i></button>
-        </div>
+<!-- ============ CONFORMIDADE PNTP ============ -->
+<section class="secao" id="sec-pntp">
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px">
+    <div class="box">
+      <div class="box-hd"><div class="box-titulo"><i class="ti ti-shield-check"></i>Radar da Transparência — PNTP 2026</div></div>
+      <div class="box-body"><div class="radar-wrap"><canvas id="chartRadar" role="img" aria-label="Gráfico radar de conformidade PNTP por categoria"></canvas></div></div>
+    </div>
+    <div class="box">
+      <div class="box-hd"><div class="box-titulo"><i class="ti ti-checklist"></i>Critérios por Categoria</div></div>
+      <div class="box-body" style="padding:8px 16px">
+        <div class="crit-check"><span>Transparência Ativa</span><span class="cs-ok"><i class="ti ti-check"></i>100%</span></div>
+        <div class="crit-check"><span>Transparência Passiva</span><span class="cs-ok"><i class="ti ti-check"></i>96%</span></div>
+        <div class="crit-check"><span>Receitas e Despesas</span><span class="cs-ok"><i class="ti ti-check"></i>98%</span></div>
+        <div class="crit-check"><span>Licitações e Contratos</span><span class="cs-ok"><i class="ti ti-check"></i>97%</span></div>
+        <div class="crit-check"><span>Recursos Humanos</span><span class="cs-ok"><i class="ti ti-check"></i>95%</span></div>
+        <div class="crit-check"><span>Planejamento e Orçamento</span><span class="cs-ok"><i class="ti ti-check"></i>100%</span></div>
+        <div class="crit-check"><span>Acessibilidade WCAG 2.1</span><span class="cs-warn"><i class="ti ti-alert-triangle"></i>82%</span></div>
+        <div class="crit-check"><span>Dados Abertos / API</span><span class="cs-warn"><i class="ti ti-alert-triangle"></i>78%</span></div>
+        <div class="crit-check"><span>LGPD</span><span class="cs-ok"><i class="ti ti-check"></i>91%</span></div>
+        <div class="crit-check"><span>Saúde</span><span class="cs-ok"><i class="ti ti-check"></i>93%</span></div>
+        <div class="crit-check"><span>Educação</span><span class="cs-err"><i class="ti ti-x"></i>70% ⚠</span></div>
+        <div class="crit-check"><span>Obras Públicas</span><span class="cs-warn"><i class="ti ti-alert-triangle"></i>85%</span></div>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="box">
+    <div class="box-hd"><div class="box-titulo"><i class="ti ti-alert-triangle" style="color:#C88A00"></i>Pendências para Atingir 100% do PNTP</div></div>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Código</th><th>Critério</th><th>Categoria</th><th>Prazo Sugerido</th><th>Risco</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td>EDU-3.2.4</td><td>Publicar indicadores de aprendizagem por escola</td><td>Educação</td><td>30/06/2025</td><td><span class="tag tg-r">Alto</span></td><td><button class="btn-exp" style="font-size:11px">Resolver</button></td></tr>
+          <tr><td>EDU-4.1.1</td><td>Cardápio da merenda escolar por unidade</td><td>Educação</td><td>15/07/2025</td><td><span class="tag tg-d">Médio</span></td><td><button class="btn-exp" style="font-size:11px">Resolver</button></td></tr>
+          <tr><td>ACC-2.3</td><td>Implementar VLibras em todas as páginas</td><td>Acessibilidade</td><td>01/07/2025</td><td><span class="tag tg-d">Médio</span></td><td><button class="btn-exp" style="font-size:11px">Resolver</button></td></tr>
+          <tr><td>GOV-1.4.2</td><td>API REST pública documentada (Swagger)</td><td>Dados Abertos</td><td>31/07/2025</td><td><span class="tag tg-d">Médio</span></td><td><button class="btn-exp" style="font-size:11px">Resolver</button></td></tr>
+          <tr><td>OBR-5.1</td><td>Fotos mensais de todas as obras publicadas</td><td>Obras</td><td>Mensal</td><td><span class="tag tg-a">Baixo</span></td><td><button class="btn-exp" style="font-size:11px">Resolver</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IA ============ -->
+<section class="secao" id="sec-ia">
+  <div style="max-width:800px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="font-size:48px;margin-bottom:8px">🤖</div>
+      <h2 style="font-size:24px;font-weight:700;color:var(--verde);margin-bottom:6px">Assistente de Transparência</h2>
+      <p style="color:var(--cinza5);font-size:14px">Consulte dados públicos municipais em linguagem natural</p>
+    </div>
+    <div class="ia-wrap">
+      <div class="ia-hd"><i class="ti ti-robot"></i><span>IA Cidadã — Portal da Transparência</span><span class="ia-beta">PNTP CRITÉRIO 7.3</span></div>
+      <div class="ia-sug" style="padding-top:10px">
+        <button class="sug-pill" onclick="envP2('Quanto foi gasto com combustível em 2025?')">Gastos com combustível</button>
+        <button class="sug-pill" onclick="envP2('Quanto foi arrecadado de IPTU?')">Arrecadação IPTU</button>
+        <button class="sug-pill" onclick="envP2('Quem recebeu diárias este mês?')">Diárias do mês</button>
+        <button class="sug-pill" onclick="envP2('Quais contratos vencem em 30 dias?')">Contratos a vencer</button>
+        <button class="sug-pill" onclick="envP2('Qual a nota PNTP do município?')">Nota PNTP</button>
+        <button class="sug-pill" onclick="envP2('Qual o maior contrato da Secretaria de Saúde?')">Maior contrato Saúde</button>
+      </div>
+      <div class="ia-msgs" id="ia-chat2" style="max-height:380px">
+        <div class="msg msg-bot">Olá! Sou o Assistente de Transparência com IA. Posso consultar receitas, despesas, licitações, contratos, servidores, obras e indicadores PNTP. O que você gostaria de saber?</div>
+      </div>
+      <div class="ia-inp-area">
+        <input class="ia-inp" id="ia-inp2" type="text" placeholder="Ex: Quanto gastamos com pessoal em maio de 2025?" onkeypress="if(event.key==='Enter')envIA2()">
+        <button class="btn-send" onclick="envIA2()" aria-label="Enviar"><i class="ti ti-send"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
@@ -1488,147 +674,197 @@
 <footer class="footer" role="contentinfo">
   <div class="footer-links">
     <a href="#">Política de Privacidade</a>
-    <a href="#">LGPD — Canal do DPO</a>
+    <a href="#">LGPD — Canal DPO</a>
     <a href="#">Dados Abertos / API</a>
     <a href="#">Mapa do Site</a>
     <a href="#">Acessibilidade</a>
     <a href="#">e-SIC</a>
   </div>
-  <div>Portal da Transparência Pública · Desenvolvido por <strong style="color:var(--dourado-claro)">Freire Tecnologia</strong> · PNTP 94% · TCM/BA Aprovado · v2.0 · 2025</div>
+  <div>Portal da Transparência Pública · Desenvolvido por <strong style="color:var(--dourado3)">Freire Tecnologia</strong> · PNTP 94% · TCM/BA Aprovado · v2025.06</div>
 </footer>
 
-<!-- Chart.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 // ===== NAVEGAÇÃO =====
-function irParaSecao(id) {
-  document.querySelectorAll('.secao').forEach(s => s.classList.remove('ativa'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const secao = document.getElementById('secao-' + id);
-  const nav = document.getElementById('nav-' + id);
-  if (secao) secao.classList.add('ativa');
-  if (nav) nav.classList.add('active');
-  window.scrollTo(0, 0);
+const SECOES={
+  'dashboard':'dash','receitas':'rec','despesas':'desp','licitacoes':'lic',
+  'contratos':'con','obras':'ob','rh':'rh','planejamento':'plan','sic':'sic',
+  'pntp':'pntp','ia':'ia'
+};
+function ir(id){
+  document.querySelectorAll('.secao').forEach(s=>s.classList.remove('ativa'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('ativo'));
+  const s=document.getElementById('sec-'+id);
+  const n=document.getElementById('nav-'+SECOES[id]);
+  if(s)s.classList.add('ativa');
+  if(n)n.classList.add('ativo');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='pntp'&&!window._radarInit)initRadar();
 }
 
 // ===== ACESSIBILIDADE =====
-let fontSize = 100;
-function adjustFont(delta) {
-  fontSize = Math.max(80, Math.min(130, fontSize + delta * 10));
-  document.body.style.fontSize = fontSize + '%';
-}
-function toggleContrast() {
-  document.body.classList.toggle('alto-contraste');
-}
+let fs=100;
+function ajFont(d){fs=Math.max(85,Math.min(125,fs+d*10));document.body.style.fontSize=fs+'%'}
+function toggleContraste(){document.body.classList.toggle('alto-contraste')}
 
 // ===== GRÁFICO DASHBOARD =====
-const meses = ['Jan','Fev','Mar','Abr','Mai','Jun'];
-const chartCtx = document.getElementById('chartDashboard');
-if (chartCtx) {
-  new Chart(chartCtx, {
-    type: 'bar',
-    data: {
-      labels: meses,
-      datasets: [
-        { label: 'Receita Arrecadada', data: [5.8,6.1,7.2,6.8,7.4,9.5], backgroundColor: '#0A6E4A', borderRadius: 4 },
-        { label: 'Despesa Liquidada', data: [5.2,5.8,6.4,6.1,6.9,7.7], backgroundColor: '#C8972A', borderRadius: 4 }
+new Chart(document.getElementById('chartDash'),{
+  type:'bar',
+  data:{
+    labels:['Jan','Fev','Mar','Abr','Mai','Jun'],
+    datasets:[
+      {label:'Receita Arrecadada',data:[5.8,6.1,7.2,6.8,7.4,9.5],backgroundColor:'#0D7A4E',borderRadius:4,borderSkipped:false},
+      {label:'Despesa Liquidada',data:[5.2,5.8,6.4,6.1,6.9,7.7],backgroundColor:'#C8960A',borderRadius:4,borderSkipped:false}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{family:'Inter',size:12},padding:14,usePointStyle:true,pointStyle:'rect'}}},
+    scales:{
+      y:{grid:{color:'#EFF1F4'},ticks:{callback:v=>'R$ '+v+'M',font:{family:'Inter',size:11}}},
+      x:{grid:{display:false},ticks:{font:{family:'Inter',size:11}}}
+    }
+  }
+});
+
+// ===== GRÁFICO RADAR =====
+let _radarInit=false;
+function initRadar(){
+  _radarInit=true;
+  new Chart(document.getElementById('chartRadar'),{
+    type:'radar',
+    data:{
+      labels:['T.Ativa','T.Passiva','Receitas','Despesas','Licitações','RH','Planejamento','Obras','LGPD','Acessib.'],
+      datasets:[
+        {label:'Conformidade',data:[100,96,98,98,97,95,100,85,91,82],backgroundColor:'rgba(13,122,78,.15)',borderColor:'#0D7A4E',pointBackgroundColor:'#0D7A4E',pointRadius:4},
+        {label:'Meta 100%',data:[100,100,100,100,100,100,100,100,100,100],backgroundColor:'transparent',borderColor:'rgba(200,150,10,.4)',borderDash:[4,4],pointRadius:0}
       ]
     },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'top', labels: { font: { family: 'DM Sans', size: 12 }, padding: 16 } } },
-      scales: {
-        y: { grid: { color: '#EEF0F2' }, ticks: { callback: v => 'R$ ' + v + 'M', font: { family: 'DM Sans', size: 11 } } },
-        x: { grid: { display: false }, ticks: { font: { family: 'DM Sans', size: 11 } } }
-      }
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      scales:{r:{min:60,max:100,ticks:{stepSize:10,font:{size:10,family:'Inter'}},pointLabels:{font:{size:11,family:'Inter',weight:'500'}},grid:{color:'#EFF1F4'}}},
+      plugins:{legend:{labels:{font:{family:'Inter',size:12},padding:14}}}
     }
   });
 }
 
-// ===== GRÁFICO RADAR PNTP =====
-const radarCtx = document.getElementById('chartRadar');
-if (radarCtx) {
-  new Chart(radarCtx, {
-    type: 'radar',
-    data: {
-      labels: ['T. Ativa','T. Passiva','Receitas','Despesas','Licitações','RH','Planejamento','Obras','LGPD','Acessibilidade'],
-      datasets: [{
-        label: 'Conformidade PNTP',
-        data: [100, 96, 98, 98, 97, 95, 100, 85, 91, 82],
-        backgroundColor: 'rgba(10,110,74,0.18)',
-        borderColor: '#0A6E4A',
-        pointBackgroundColor: '#0A6E4A',
-        pointRadius: 4
-      }, {
-        label: 'Meta 100%',
-        data: [100,100,100,100,100,100,100,100,100,100],
-        backgroundColor: 'transparent',
-        borderColor: 'rgba(200,151,42,0.4)',
-        borderDash: [5,5],
-        pointRadius: 0
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      scales: { r: { min: 50, max: 100, ticks: { stepSize: 10, font: { size: 10, family: 'DM Sans' } }, pointLabels: { font: { size: 11, family: 'DM Sans', weight: '500' } }, grid: { color: '#EEF0F2' } } },
-      plugins: { legend: { labels: { font: { family: 'DM Sans', size: 12 }, padding: 16 } } }
-    }
-  });
-}
-
-// ===== IA CHAT =====
-const respostas = {
-  'combustível': 'Em 2025, foram gastos <strong>R$ 284.800</strong> com combustível (jan–jun), distribuídos entre as Secretarias de Saúde (R$ 98.400), Infraestrutura (R$ 84.200), Educação (R$ 62.100) e demais (R$ 40.100). Isso representa 0,7% do total de despesas do período.',
-  'iptu': 'A arrecadação de IPTU em 2025 (jan–jun) totalizou <strong>R$ 14,2 milhões</strong>, correspondendo a 89% da previsão anual de R$ 16 milhões. O pico de arrecadação foi em março (vencimento da cota única), com R$ 4,8M.',
-  'diária': 'Em junho/2025, <strong>14 servidores</strong> receberam diárias, totalizando R$ 38.420. Os maiores valores foram: Sec. João Alves (Saúde) — R$ 4.800 (viagem Brasília/capacitação SUS), Sec. Maria Costa (Educação) — R$ 3.200, e Prefeito — R$ 2.400 (evento CONFAB).',
-  'contrato': 'Há <strong>8 contratos</strong> com vencimento nos próximos 30 dias. Os mais críticos: Limpeza City Serviços (22/07 — R$ 840K), TI Suporte Network (15/07 — R$ 120K) e Vigilância Protege (08/07 — R$ 384K). Recomendo iniciar processo licitatório imediatamente para os dois primeiros.',
-  'saúde': 'O maior contrato vigente da Secretaria de Saúde é o <strong>PE 045/2025 — FARMÁCIA DISTRIBUIDORA LTDA</strong>, no valor de R$ 2.640.000 (com aditivo), referente ao Registro de Preços de medicamentos. Vigência: mar/2025 a mar/2026.',
-  'pntp': 'A nota do município no PNTP 2026 é de <strong>94% (236/251 critérios)</strong>. Pontos de destaque: 100% em Transparência Ativa e Planejamento. Pendências críticas: Educação (70%) e Acessibilidade (82%). Para atingir 100%, recomendo priorizar a publicação de indicadores educacionais e implementação do VLibras.',
+// ===== IA =====
+const R={
+  combustivel:'Em 2025 (jan–jun), foram gastos <strong>R$ 284.800</strong> com combustível, distribuídos entre Saúde (R$ 98.400), Infraestrutura (R$ 84.200), Educação (R$ 62.100) e demais (R$ 40.100). Representa 0,7% das despesas do período.',
+  iptu:'A arrecadação de IPTU em 2025 (jan–jun) totalizou <strong>R$ 14,2 milhões</strong>, 89% da previsão anual de R$ 16M. Pico em março (cota única): R$ 4,8M.',
+  diaria:'Em junho/2025, <strong>14 servidores</strong> receberam diárias — total R$ 38.420. Maiores: Sec. João Alves (Saúde) R$ 4.800; Sec. Maria Costa (Educação) R$ 3.200.',
+  contrato:'<strong>8 contratos</strong> vencem nos próximos 30 dias. Mais urgentes: Limpeza City Serviços (22/07 — R$ 840K) e TI Suporte Network (15/07 — R$ 120K). Recomendo iniciar licitação imediatamente.',
+  saude:'Maior contrato da Secretaria de Saúde: <strong>PE 045/2025 — FARMÁCIA DISTRIBUIDORA LTDA</strong>, R$ 2.640.000 (com aditivo), medicamentos — vigência mar/25 a mar/26.',
+  pntp:'Nota PNTP atual: <strong>94% (236/251 critérios)</strong>. Destaques: 100% em Transparência Ativa e Planejamento. Pendências críticas: Educação (70%) e Acessibilidade (82%). Para 100%: publicar indicadores educacionais e implementar VLibras.'
 };
-
-function buscarResposta(pergunta) {
-  const p = pergunta.toLowerCase();
-  if (p.includes('combustível') || p.includes('combustivel')) return respostas['combustível'];
-  if (p.includes('iptu') || p.includes('arrecad')) return respostas['iptu'];
-  if (p.includes('diária') || p.includes('diaria')) return respostas['diária'];
-  if (p.includes('contrato') || p.includes('venc')) return respostas['contrato'];
-  if (p.includes('saúde') || p.includes('saude') || p.includes('maior contrato')) return respostas['saúde'];
-  if (p.includes('pntp') || p.includes('nota') || p.includes('radar')) return respostas['pntp'];
-  return 'Consultando a base de dados municipal... Para essa pergunta específica, recomendo acessar as seções de <strong>Receitas</strong> ou <strong>Despesas</strong> no menu acima, onde você pode aplicar filtros detalhados. Posso ajudar com: combustível, IPTU, diárias, contratos, PNTP ou maiores contratos da Saúde.';
+function resp(p){
+  const t=p.toLowerCase();
+  if(t.includes('combustível')||t.includes('combustivel'))return R.combustivel;
+  if(t.includes('iptu')||t.includes('arrecad'))return R.iptu;
+  if(t.includes('diária')||t.includes('diaria'))return R.diaria;
+  if(t.includes('contrato')||t.includes('venc'))return R.contrato;
+  if(t.includes('saúde')||t.includes('saude')||t.includes('maior contrato'))return R.saude;
+  if(t.includes('pntp')||t.includes('nota')||t.includes('radar'))return R.pntp;
+  return 'Consultando a base de dados... Para essa pergunta, acesse as seções de <strong>Receitas</strong> ou <strong>Despesas</strong> para filtros detalhados. Posso responder sobre: combustível, IPTU, diárias, contratos a vencer, nota PNTP e maiores contratos da Saúde.';
 }
-
-function enviarPergunta(texto) {
-  document.getElementById('ia-input').value = texto;
-  enviarIA();
+function addMsg(chatId,txt,tipo){
+  const c=document.getElementById(chatId);
+  const d=document.createElement('div');
+  d.className='msg msg-'+tipo;d.innerHTML=txt;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
 }
-
-function enviarIA() {
-  const input = document.getElementById('ia-input');
-  const chat = document.getElementById('ia-chat');
-  const texto = input.value.trim();
-  if (!texto) return;
-  chat.innerHTML += '<div class="msg msg-user">' + texto + '</div>';
-  input.value = '';
-  setTimeout(() => {
-    chat.innerHTML += '<div class="msg msg-bot">' + buscarResposta(texto) + '</div>';
-    chat.scrollTop = chat.scrollHeight;
-  }, 600);
-  chat.scrollTop = chat.scrollHeight;
+function envP(t){document.getElementById('ia-inp').value=t;envIA()}
+function envIA(){
+  const i=document.getElementById('ia-inp'),t=i.value.trim();
+  if(!t)return;
+  addMsg('ia-chat',t,'user');i.value='';
+  setTimeout(()=>addMsg('ia-chat',resp(t),'bot'),600);
 }
-
-function enviarIA2() {
-  const input = document.getElementById('ia-input-2');
-  const chat = document.getElementById('ia-chat-2');
-  const texto = input.value.trim();
-  if (!texto) return;
-  chat.innerHTML += '<div class="msg msg-user">' + texto + '</div>';
-  input.value = '';
-  setTimeout(() => {
-    chat.innerHTML += '<div class="msg msg-bot">' + buscarResposta(texto) + '</div>';
-    chat.scrollTop = chat.scrollHeight;
-  }, 700);
-  chat.scrollTop = chat.scrollHeight;
+function envP2(t){document.getElementById('ia-inp2').value=t;envIA2()}
+function envIA2(){
+  const i=document.getElementById('ia-inp2'),t=i.value.trim();
+  if(!t)return;
+  addMsg('ia-chat2',t,'user');i.value='';
+  setTimeout(()=>addMsg('ia-chat2',resp(t),'bot'),700);
 }
+</script>
+
+<!-- MODAL LOGIN -->
+<div id="modal-login" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:14px;width:100%;max-width:420px;margin:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.3)">
+    <div style="background:linear-gradient(135deg,#0A5C3A,#1A3F6A);padding:32px 32px 24px;text-align:center;position:relative">
+      <button onclick="fecharLogin()" style="position:absolute;top:14px;right:16px;background:rgba(255,255,255,0.15);border:none;color:white;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1">✕</button>
+      <div style="width:58px;height:66px;background:#C8960A;clip-path:polygon(50% 0%,100% 14%,100% 62%,50% 100%,0% 62%,0% 14%);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;font-weight:700;color:white">F</div>
+      <div style="color:white;font-size:18px;font-weight:700;margin-bottom:4px">Área Restrita</div>
+      <div style="color:rgba(255,255,255,0.65);font-size:12px">Portal da Transparência · Freire Tecnologia</div>
+    </div>
+    <div style="padding:28px 32px 32px">
+      <div id="login-erro" style="display:none;background:#FDEAEA;border:1px solid #F5BABA;border-radius:7px;padding:10px 14px;font-size:13px;color:#8A1C1C;margin-bottom:16px"></div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:12px;font-weight:600;color:#3D4A5C;margin-bottom:6px;letter-spacing:.04em">USUÁRIO</label>
+        <div style="position:relative">
+          <i class="ti ti-user" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#8A96A8;font-size:16px"></i>
+          <input id="login-user" type="text" placeholder="Digite seu usuário" style="width:100%;padding:10px 12px 10px 36px;border:1px solid #DDE1E7;border-radius:7px;font-size:14px;font-family:Inter,sans-serif;outline:none;box-sizing:border-box" onfocus="this.style.borderColor='#0D7A4E'" onblur="this.style.borderColor='#DDE1E7'" onkeypress="if(event.key==='Enter')document.getElementById('login-pass').focus()">
+        </div>
+      </div>
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:12px;font-weight:600;color:#3D4A5C;margin-bottom:6px;letter-spacing:.04em">SENHA</label>
+        <div style="position:relative">
+          <i class="ti ti-lock" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#8A96A8;font-size:16px"></i>
+          <input id="login-pass" type="password" placeholder="Digite sua senha" style="width:100%;padding:10px 36px 10px 36px;border:1px solid #DDE1E7;border-radius:7px;font-size:14px;font-family:Inter,sans-serif;outline:none;box-sizing:border-box" onfocus="this.style.borderColor='#0D7A4E'" onblur="this.style.borderColor='#DDE1E7'" onkeypress="if(event.key==='Enter')fazerLogin()">
+          <button onclick="toggleSenha()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#8A96A8;font-size:16px"><i id="ico-olho" class="ti ti-eye"></i></button>
+        </div>
+      </div>
+      <button onclick="fazerLogin()" style="width:100%;padding:12px;background:#0A5C3A;color:white;border:none;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;display:flex;align-items:center;justify-content:center;gap:8px" onmouseover="this.style.background='#0D7A4E'" onmouseout="this.style.background='#0A5C3A'">
+        <i class="ti ti-login"></i> Entrar
+      </button>
+      <div style="text-align:center;margin-top:16px">
+        <a href="#" style="font-size:12px;color:#0D7A4E;text-decoration:none">Esqueci minha senha</a>
+      </div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid #EFF1F4;text-align:center;font-size:11px;color:#B0B8C4">
+        🔒 Acesso protegido · LGPD Compliant · Freire Tecnologia
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function abrirLogin(){
+  const m=document.getElementById('modal-login');
+  m.style.display='flex';
+  setTimeout(()=>document.getElementById('login-user').focus(),100);
+}
+function fecharLogin(){
+  document.getElementById('modal-login').style.display='none';
+  document.getElementById('login-user').value='';
+  document.getElementById('login-pass').value='';
+  document.getElementById('login-erro').style.display='none';
+}
+function toggleSenha(){
+  const p=document.getElementById('login-pass');
+  const i=document.getElementById('ico-olho');
+  if(p.type==='password'){p.type='text';i.className='ti ti-eye-off';}
+  else{p.type='password';i.className='ti ti-eye';}
+}
+function fazerLogin(){
+  const u=document.getElementById('login-user').value.trim();
+  const p=document.getElementById('login-pass').value.trim();
+  const err=document.getElementById('login-erro');
+  if(!u||!p){err.style.display='block';err.innerHTML='⚠️ Preencha usuário e senha.';return;}
+  if((u==='admin'&&p==='freire2025')||(u==='gestor'&&p==='transparencia')){
+    err.style.display='none';
+    fecharLogin();
+    alert('✅ Login realizado com sucesso!\n\nBem-vindo ao painel administrativo.');
+  } else {
+    err.style.display='block';
+    err.innerHTML='❌ Usuário ou senha incorretos.';
+    document.getElementById('login-pass').value='';
+    document.getElementById('login-pass').focus();
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('modal-login').addEventListener('click',function(e){
+    if(e.target===this)fecharLogin();
+  });
+});
 </script>
 </body>
 </html>
