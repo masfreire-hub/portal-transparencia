@@ -419,16 +419,16 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
       </div>
     </div>
     <div class="filtros">
-      <select class="f-sel"><option>2025</option><option>2024</option><option>2023</option></select>
-      <select class="f-sel"><option>Todos os meses</option><option>Janeiro</option><option>Fevereiro</option><option>Março</option><option>Abril</option><option>Maio</option><option>Junho</option></select>
-      <select class="f-sel"><option>Todas as fontes</option><option>Tesouro Municipal</option><option>Transferências União</option><option>Transferências Estado</option></select>
-      <input class="f-inp" type="text" placeholder="Pesquisar natureza da receita...">
-      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Pesquisar</button>
+      <select class="f-sel" id="f-rec-ano" onchange="filtrarReceitas()"><option>2025</option><option>2024</option><option>2023</option></select>
+      <select class="f-sel" id="f-rec-mes" onchange="filtrarReceitas()"><option>Todos os meses</option><option>Janeiro</option><option>Fevereiro</option><option>Março</option><option>Abril</option><option>Maio</option><option>Junho</option></select>
+      <select class="f-sel" id="f-rec-fonte" onchange="filtrarReceitas()"><option>Todas as fontes</option><option>Tesouro</option><option>União</option><option>Estado</option></select>
+      <input class="f-inp" id="f-rec-busca" type="text" placeholder="Pesquisar natureza da receita..." oninput="filtrarReceitas()">
+      <button class="btn-busca ml-auto" onclick="filtrarReceitas()"><i class="ti ti-search"></i>Pesquisar</button>
     </div>
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr><th>Data</th><th>Natureza da Receita</th><th>Fonte</th><th>Categoria</th><th>Previsto</th><th>Arrecadado</th><th>% Execução</th></tr></thead>
-        <tbody>
+        <tbody id="tb-receitas">
           <tr><td>01/06/2025</td><td>IPTU — Imposto Predial e Territorial Urbano</td><td>Tesouro</td><td><span class="tag tg-a">Tributária</span></td><td>R$ 2.840.000</td><td>R$ 2.612.800</td><td><div class="barra-prog"><div class="barra-fill" style="width:92%"></div></div>92%</td></tr>
           <tr><td>01/06/2025</td><td>ISS — Imposto sobre Serviços</td><td>Tesouro</td><td><span class="tag tg-a">Tributária</span></td><td>R$ 1.920.000</td><td>R$ 1.843.200</td><td><div class="barra-prog"><div class="barra-fill" style="width:96%"></div></div>96%</td></tr>
           <tr><td>05/06/2025</td><td>FPM — Fundo de Participação dos Municípios</td><td>União</td><td><span class="tag tg-v">Transferência</span></td><td>R$ 8.100.000</td><td>R$ 7.533.000</td><td><div class="barra-prog"><div class="barra-fill" style="width:93%"></div></div>93%</td></tr>
@@ -450,16 +450,16 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
       <div style="display:flex;gap:7px"><button class="btn-exp"><i class="ti ti-file-spreadsheet"></i>Excel</button><button class="btn-exp"><i class="ti ti-file-type-pdf"></i>PDF</button></div>
     </div>
     <div class="filtros">
-      <select class="f-sel"><option>2025</option><option>2024</option></select>
-      <select class="f-sel"><option>Todos os meses</option><option>Junho</option><option>Maio</option></select>
-      <select class="f-sel"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option><option>Administração</option></select>
-      <input class="f-inp" type="text" placeholder="CNPJ/CPF do credor...">
-      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Pesquisar</button>
+      <select class="f-sel" id="f-desp-ano" onchange="filtrarDespesas()"><option>2025</option><option>2024</option></select>
+      <select class="f-sel" id="f-desp-mes" onchange="filtrarDespesas()"><option>Todos os meses</option><option>Junho</option><option>Maio</option></select>
+      <select class="f-sel" id="f-desp-sec" onchange="filtrarDespesas()"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option><option>Administração</option></select>
+      <input class="f-inp" id="f-desp-busca" type="text" placeholder="CNPJ/CPF ou nome do credor..." oninput="filtrarDespesas()">
+      <button class="btn-busca ml-auto" onclick="filtrarDespesas()"><i class="ti ti-search"></i>Pesquisar</button>
     </div>
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr><th>Nº Empenho</th><th>Data</th><th>Credor</th><th>CNPJ</th><th>Objeto</th><th>Secretaria</th><th>Empenho</th><th>Liquidado</th><th>Pago</th><th>Situação</th></tr></thead>
-        <tbody>
+        <tbody id="tb-despesas">
           <tr><td><a href="#" class="link">2025/04821</a></td><td>02/06/2025</td><td>DISTRIBUIDORA MEDICAMENTOS LTDA</td><td>12.345.678/0001-99</td><td>Aquisição medicamentos hospitalares</td><td>Saúde</td><td>R$ 284.900</td><td>R$ 284.900</td><td>R$ 284.900</td><td><span class="tag tg-v">Pago</span></td></tr>
           <tr><td><a href="#" class="link">2025/04920</a></td><td>05/06/2025</td><td>CONSTRUTORA BAHIA NOVA S/A</td><td>98.765.432/0001-11</td><td>Pavimentação vias urbanas — Lote 03</td><td>Infraestrutura</td><td>R$ 1.842.000</td><td>R$ 921.000</td><td>R$ 921.000</td><td><span class="tag tg-d">Em execução</span></td></tr>
           <tr><td><a href="#" class="link">2025/04945</a></td><td>07/06/2025</td><td>ENERGIA ELÉTRICA BAHIA S.A.</td><td>23.456.789/0001-55</td><td>Fornecimento energia elétrica — jun/2025</td><td>Administração</td><td>R$ 143.200</td><td>R$ 143.200</td><td>—</td><td><span class="tag tg-a">A pagar</span></td></tr>
@@ -478,16 +478,16 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
       <button class="btn-exp"><i class="ti ti-rss"></i>Feed RSS</button>
     </div>
     <div class="filtros">
-      <select class="f-sel"><option>Todas as modalidades</option><option>Pregão Eletrônico</option><option>Concorrência</option><option>Dispensa</option><option>Inexigibilidade</option></select>
-      <select class="f-sel"><option>Todas as situações</option><option>Em andamento</option><option>Homologada</option><option>Deserta/Fracassada</option></select>
-      <select class="f-sel"><option>2025</option><option>2024</option></select>
-      <input class="f-inp" type="text" placeholder="Pesquisar objeto...">
-      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Buscar</button>
+      <select class="f-sel" id="f-lic-mod" onchange="filtrarLicitacoes()"><option>Todas as modalidades</option><option>Pregão Eletrônico</option><option>Concorrência</option><option>Dispensa</option><option>Inexigibilidade</option></select>
+      <select class="f-sel" id="f-lic-sit" onchange="filtrarLicitacoes()"><option>Todas as situações</option><option>Em andamento</option><option>Homologada</option><option>Deserta/Fracassada</option></select>
+      <select class="f-sel" id="f-lic-ano" onchange="filtrarLicitacoes()"><option>2025</option><option>2024</option></select>
+      <input class="f-inp" id="f-lic-busca" type="text" placeholder="Pesquisar objeto..." oninput="filtrarLicitacoes()">
+      <button class="btn-busca ml-auto" onclick="filtrarLicitacoes()"><i class="ti ti-search"></i>Buscar</button>
     </div>
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr><th>Processo</th><th>Modalidade</th><th>Objeto</th><th>Secretaria</th><th>Valor Est.</th><th>Abertura</th><th>Situação</th><th>Documentos</th></tr></thead>
-        <tbody>
+        <tbody id="tb-licitacoes">
           <tr><td><strong>PE 048/2025</strong></td><td>Pregão Eletrônico</td><td>Material de escritório e expediente</td><td>Administração</td><td>R$ 182.400</td><td>20/06/2025 09h</td><td><span class="tag tg-a">Em andamento</span></td><td><a href="#" class="link" style="font-size:12px">📄 Edital · ETP</a></td></tr>
           <tr><td><strong>CC 012/2025</strong></td><td>Concorrência</td><td>Construção de UBS Bairro Canabrava</td><td>Saúde</td><td>R$ 4.200.000</td><td>15/07/2025 10h</td><td><span class="tag tg-a">Em andamento</span></td><td><a href="#" class="link" style="font-size:12px">📄 Edital · TR</a></td></tr>
           <tr><td><strong>PE 045/2025</strong></td><td>Pregão Eletrônico</td><td>Medicamentos e insumos hospitalares</td><td>Saúde</td><td>R$ 1.840.000</td><td>30/05/2025</td><td><span class="tag tg-v">Homologada</span></td><td><a href="#" class="link" style="font-size:12px">📄 Ata · Contrato</a></td></tr>
@@ -503,15 +503,15 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
   <div class="box">
     <div class="box-hd"><div class="box-titulo"><i class="ti ti-file-text"></i>Contratos Vigentes</div></div>
     <div class="filtros">
-      <input class="f-inp" type="text" placeholder="CNPJ ou nome do contratado...">
-      <select class="f-sel"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option></select>
-      <select class="f-sel"><option>Todos</option><option>Vence em 30 dias</option><option>Vence em 60 dias</option></select>
-      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Buscar</button>
+      <input class="f-inp" id="f-con-busca" type="text" placeholder="CNPJ ou nome do contratado..." oninput="filtrarContratos()">
+      <select class="f-sel" id="f-con-sec" onchange="filtrarContratos()"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option><option>Infraestrutura</option></select>
+      <select class="f-sel" id="f-con-venc" onchange="filtrarContratos()"><option>Todos</option><option>Vence em 30 dias</option><option>Vence em 60 dias</option></select>
+      <button class="btn-busca ml-auto" onclick="filtrarContratos()"><i class="ti ti-search"></i>Buscar</button>
     </div>
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr><th>Nº</th><th>Contratado</th><th>Objeto</th><th>Fiscal</th><th>Vigência</th><th>Valor Inicial</th><th>Valor Atual</th><th>Situação</th><th>Docs</th></tr></thead>
-        <tbody>
+        <tbody id="tb-contratos">
           <tr><td>045/2025</td><td>CONSTRUTORA BAHIA NOVA S/A</td><td>Pavimentação vias — Lote 03</td><td>Eng. João Meireles</td><td>Jun/25 — Mai/26</td><td>R$ 1.842.000</td><td>R$ 1.842.000</td><td><span class="tag tg-v">Vigente</span></td><td><a href="#" class="link" style="font-size:12px">Ver</a></td></tr>
           <tr><td>032/2025</td><td>FARMÁCIA DISTRIBUIDORA LTDA</td><td>Medicamentos — Ata RP</td><td>Farm. Ana Souza</td><td>Mar/25 — Mar/26</td><td>R$ 2.400.000</td><td>R$ 2.640.000</td><td><span class="tag tg-v">Vigente</span></td><td><a href="#" class="link" style="font-size:12px">Ver · Aditivo</a></td></tr>
           <tr><td>018/2024</td><td>LIMPEZA CITY SERVIÇOS</td><td>Limpeza predial e conservação</td><td>Sec. Fernanda Lima</td><td>Jan/24 — <strong style="color:#B07900">30/06/25</strong></td><td>R$ 840.000</td><td>R$ 840.000</td><td><span class="tag tg-d">Vence em 22 dias</span></td><td><a href="#" class="link" style="font-size:12px">Ver</a></td></tr>
@@ -534,11 +534,11 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
       </div>
     </div>
     <div class="filtros">
-      <select class="f-sel"><option>Todos os anos</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select>
-      <select class="f-sel"><option>Todas as situações</option><option>Em andamento</option><option>Concluída</option><option>Paralisada</option></select>
-      <select class="f-sel"><option>Todas as secretarias</option><option>Infraestrutura</option><option>Saúde</option><option>Educação</option></select>
-      <input class="f-inp" type="text" placeholder="Pesquisar obra...">
-      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Pesquisar</button>
+      <select class="f-sel" id="f-ob-ano" onchange="filtrarObras()"><option>Todos os anos</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select>
+      <select class="f-sel" id="f-ob-sit" onchange="filtrarObras()"><option>Todas as situações</option><option>Em andamento</option><option>Concluída</option><option>Paralisada</option></select>
+      <select class="f-sel" id="f-ob-sec" onchange="filtrarObras()"><option>Todas as secretarias</option><option>Infraestrutura</option><option>Saúde</option><option>Educação</option></select>
+      <input class="f-inp" id="f-ob-busca" type="text" placeholder="Pesquisar obra..." oninput="filtrarObras()">
+      <button class="btn-busca ml-auto" onclick="filtrarObras()"><i class="ti ti-search"></i>Pesquisar</button>
     </div>
   </div>
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
@@ -578,16 +578,16 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
       <div style="display:flex;gap:7px"><button class="btn-exp"><i class="ti ti-file-spreadsheet"></i>Excel</button><button class="btn-exp"><i class="ti ti-file-type-pdf"></i>PDF</button></div>
     </div>
     <div class="filtros">
-      <select class="f-sel"><option>Junho/2025</option><option>Maio/2025</option></select>
-      <select class="f-sel"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option></select>
-      <select class="f-sel"><option>Todos os vínculos</option><option>Efetivo</option><option>Comissionado</option></select>
-      <input class="f-inp" type="text" placeholder="Nome ou matrícula...">
-      <button class="btn-busca ml-auto"><i class="ti ti-search"></i>Buscar</button>
+      <select class="f-sel" id="f-rh-mes" onchange="filtrarRH()"><option>Junho/2025</option><option>Maio/2025</option></select>
+      <select class="f-sel" id="f-rh-sec" onchange="filtrarRH()"><option>Todas as secretarias</option><option>Saúde</option><option>Educação</option></select>
+      <select class="f-sel" id="f-rh-vinc" onchange="filtrarRH()"><option>Todos os vínculos</option><option>Efetivo</option><option>Comissionado</option></select>
+      <input class="f-inp" id="f-rh-busca" type="text" placeholder="Nome ou matrícula..." oninput="filtrarRH()">
+      <button class="btn-busca ml-auto" onclick="filtrarRH()"><i class="ti ti-search"></i>Buscar</button>
     </div>
     <div class="tbl-wrap">
       <table class="tbl">
         <thead><tr><th>Matrícula</th><th>Nome</th><th>Cargo</th><th>Lotação</th><th>Vínculo</th><th>Salário Base</th><th>Gratificações</th><th>Descontos</th><th>Líquido</th></tr></thead>
-        <tbody>
+        <tbody id="tb-rh">
           <tr><td>00821</td><td>ANA PAULA SANTOS RODRIGUES</td><td>Médica Clínica Geral</td><td>UBS Central</td><td><span class="tag tg-v">Efetivo</span></td><td>R$ 8.420</td><td>R$ 1.260</td><td>R$ 2.340</td><td><strong>R$ 7.340</strong></td></tr>
           <tr><td>01204</td><td>CARLOS AUGUSTO MENEZES</td><td>Professor Nível II</td><td>EM Dom Pedro II</td><td><span class="tag tg-v">Efetivo</span></td><td>R$ 4.820</td><td>R$ 480</td><td>R$ 1.120</td><td><strong>R$ 4.180</strong></td></tr>
           <tr><td>02841</td><td>FERNANDA LIMA DA SILVA</td><td>Diretora de Compras</td><td>Administração</td><td><span class="tag tg-a">Comissionado</span></td><td>R$ 6.200</td><td>R$ 0</td><td>R$ 869</td><td><strong>R$ 5.331</strong></td></tr>
@@ -792,14 +792,14 @@ textarea.form-ctrl{resize:vertical;min-height:80px}
         <span style="font-size:11px;color:var(--cinza5)">Atualizado: 05/06/2025 (atualização a cada 15 dias)</span>
       </div>
       <div class="filtros" style="padding:0 0 12px">
-        <select class="f-sel"><option>Todas as unidades</option><option>Farmácia Central</option><option>UBS Canabrava</option><option>UBS Central</option></select>
-        <input class="f-inp" type="text" placeholder="Buscar medicamento...">
-        <button class="btn-busca"><i class="ti ti-search"></i>Filtrar</button>
+        <select class="f-sel" id="f-est-uni" onchange="filtrarEstoque()"><option>Todas as unidades</option><option>Farmácia Central</option><option>UBS Canabrava</option><option>UBS Central</option></select>
+        <input class="f-inp" id="f-est-busca" type="text" placeholder="Buscar medicamento..." oninput="filtrarEstoque()">
+        <button class="btn-busca" onclick="filtrarEstoque()"><i class="ti ti-search"></i>Filtrar</button>
       </div>
       <div class="tbl-wrap">
         <table class="tbl">
           <thead><tr><th>Medicamento</th><th>Apresentação</th><th>Unidade</th><th>Estoque Atual</th><th>Estoque Mínimo</th><th>Situação</th></tr></thead>
-          <tbody>
+          <tbody id="tb-estoque">
             <tr><td>Amoxicilina</td><td>500mg cápsula</td><td>Farmácia Central</td><td>2.840 un</td><td>500 un</td><td><span class="tag tg-v">Normal</span></td></tr>
             <tr><td>Metformina</td><td>850mg comprimido</td><td>Farmácia Central</td><td>1.200 un</td><td>1.000 un</td><td><span class="tag tg-d">Atenção</span></td></tr>
             <tr><td>Losartana</td><td>50mg comprimido</td><td>UBS Central</td><td>3.600 un</td><td>800 un</td><td><span class="tag tg-v">Normal</span></td></tr>
@@ -1208,5 +1208,46 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 });
 </script>
+
+
+
+
+<script>
+// ===== FILTROS — versão limpa e robusta =====
+function filtrar(tbodyId, termos) {
+  var tbody = document.getElementById(tbodyId);
+  if (!tbody) { console.warn('tbody não encontrado:', tbodyId); return; }
+  var rows = tbody.getElementsByTagName('tr');
+  var visiveis = 0;
+  for (var i = 0; i < rows.length; i++) {
+    var txt = rows[i].textContent.toLowerCase();
+    var mostrar = true;
+    for (var j = 0; j < termos.length; j++) {
+      var t = (termos[j] || '').toLowerCase().trim();
+      if (t && !txt.includes(t)) { mostrar = false; break; }
+    }
+    rows[i].style.display = mostrar ? '' : 'none';
+    if (mostrar) visiveis++;
+  }
+}
+
+function val(id) {
+  var el = document.getElementById(id);
+  if (!el) return '';
+  var v = el.value || '';
+  // ignora valores padrão tipo "Todos..."
+  if (v.startsWith('Todos') || v.startsWith('Todas') || v === '') return '';
+  return v;
+}
+
+function filtrarReceitas()   { filtrar('tb-receitas',   [val('f-rec-ano'), val('f-rec-mes'), val('f-rec-fonte'), val('f-rec-busca')]); }
+function filtrarDespesas()   { filtrar('tb-despesas',   [val('f-desp-ano'), val('f-desp-mes'), val('f-desp-sec'), val('f-desp-busca')]); }
+function filtrarLicitacoes() { filtrar('tb-licitacoes', [val('f-lic-mod'), val('f-lic-sit'), val('f-lic-ano'), val('f-lic-busca')]); }
+function filtrarContratos()  { filtrar('tb-contratos',  [val('f-con-sec'), val('f-con-venc'), val('f-con-busca')]); }
+function filtrarRH()         { filtrar('tb-rh',         [val('f-rh-sec'), val('f-rh-vinc'), val('f-rh-busca')]); }
+function filtrarEstoque()    { filtrar('tb-estoque',    [val('f-est-uni'), val('f-est-busca')]); }
+function filtrarObras()      { filtrar('tb-obras',      [val('f-ob-ano'), val('f-ob-sit'), val('f-ob-sec'), val('f-ob-busca')]); }
+</script>
+
 </body>
 </html>
